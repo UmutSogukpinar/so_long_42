@@ -3,31 +3,46 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: usogukpi <usogukpi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 15:10:50 by umut              #+#    #+#             */
-/*   Updated: 2024/12/22 17:31:35 by usogukpi         ###   ########.fr       */
+/*   Updated: 2024/12/24 23:13:19 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx.h"
+#include "../libs/mlx/mlx.h"
 #include "so_long.h"
 #include "map.h"
 #include "libft.h"
 #include "stdio.h"
+#include "draw.h"
 
-void	init_game(t_game *game, char *arg)
+int	close_window(void *param)
 {
+	(void)param;
+	exit(0);
+}
+
+int	init_game_att(t_game *game, char *arg)
+{
+	int	is_successful;
+
+	is_successful = 1;
 	game -> filename = ft_strdup(arg);
 	game -> exit = 0;
 	game -> moves = 0;
-	init_map(game);
-	game -> y = (count_lines(game -> filename) * SQUARE_PIXEL);
-	game -> x = (count_column(game -> filename) * SQUARE_PIXEL);
+	game -> screen_y = (count_lines(game -> filename) * CELL_LEN);
+	game -> screen_x = (count_columns(game -> filename) * CELL_LEN);
 	game -> name = ft_strdup("so_long");
+	is_successful = init_map(game);
+	if (is_successful == -1)
+	{
+		perror("Error");
+		free_game(game);
+		return (-1);
+	}
+	return (0);
 }
-
-
 
 int	main(int arg_number, char **args)
 {
@@ -35,12 +50,19 @@ int	main(int arg_number, char **args)
 
 	if (arg_number == 2)
 	{
-		init_game(&game, args[1]);
-		// game.mlx = mlx_init();
-		// game.screen = mlx_new_window(game.mlx, game.x, game.y, game.name);
-	
-		// mlx_loop(game.mlx);
+		init_game_att(&game, args[1]);
+		game.mlx = mlx_init();
+		game.screen = mlx_new_window(game.mlx, game.screen_x, game.screen_y, game.name);
+		if (game.screen == NULL)
+		{
+			perror("Error");
+			free_game(&game);
+			return (1);
+		}
+		mlx_hook(game.screen, 17, 0, close_window, NULL);
+		mlx_loop(game.mlx);
+		draw_ground(&game);
 	}
-
-	printf("game name: %s \n game exit: %d\n game x axis: %d\n", game.name, game.exit, game.x);
+	free_game(&game);
+	return (0);
 }

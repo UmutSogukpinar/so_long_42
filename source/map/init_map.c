@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: usogukpi <usogukpi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:18:02 by umut              #+#    #+#             */
-/*   Updated: 2024/12/22 17:34:02 by usogukpi         ###   ########.fr       */
+/*   Updated: 2024/12/22 21:48:48 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,29 @@
 
 int	init_map(t_game *game)
 {
-	char	**map_struc;
+	char	**map_structure;
 	int		line_count;
 
 	line_count = count_lines(game -> filename);
-	map_struc = malloc(sizeof(char *) * (line_count + 1));
-	if (!map_struc)
+	if (!game || !game->filename)
+    {
+		printf("Error: Invalid game structure or filename.\n");
 		return (-1);
-	generate_map_struct(game -> filename, map_struc);
-	if (game -> filename == NULL)
+	}
+	if (line_count < 0)
+	{
+		printf("Error: Failed to count lines in the map file.\n");
 		return (-1);
-	else
-		return (0);
+	}
+    map_structure = malloc(sizeof(char *) * (line_count + 1));
+    if (generate_map_struct(game->filename, map_structure) < 0 || !map_structure)
+    {
+        free(map_structure);
+        printf("Error:\n");
+        return (-1);
+    }
+    game->map = map_structure;
+    return 0;
 }
 
 int	is_line(char *line)
@@ -55,41 +66,45 @@ int	count_lines(char *file_name)
 	char	*line;
 
 	fd = open(file_name, O_RDONLY);
-	if (fd < 0 )
-		return (-1);
-	counter = 0;
+    if (fd < 0)
+    {
+        printf("Error: Unable to open file.\n");
+        return (-1);
+    }
 	line = get_next_line(fd);
-	while (line)
-	{
-		if (is_line(line))
-			counter++;
+	counter = 0;
+    while (line != NULL)
+    {
+		counter++;
 		free(line);
 		line = get_next_line(fd);
-	}
+    }
 	close(fd);
 	return (counter);
 }
 
-int	count_column(char *file_name)
+int	count_columns(char *file_name)
 {
-	int		i;
 	int		fd;
-	char	*one_line;
+	char	*line;
+	int		column_count;
 
 	fd = open(file_name, O_RDONLY);
 	if (fd < 0)
 	{
-		printf("Invalid fd\n");
+		printf("Error: Unable to open file.\n");
 		return (-1);
 	}
-		
-	one_line = get_next_line(fd);
-	if (!one_line)
-		return (-1);
-	i = 0;
-	while (one_line[i] != '\n' || one_line[i] != '\0')
-		i++;
-	return (i);
+	line = get_next_line(fd);
+	column_count = 0;
+	if (line)
+	{
+		while (line[column_count] != '\n' && line[column_count] != '\0')
+			column_count++;
+		free(line);
+	}
+	close(fd);
+	return (column_count);
 }
 
 int	generate_map_struct(char *file_name, char **map_struct)

@@ -1,27 +1,38 @@
 NAME = so_long
 
+SOURCE_DIR = ./source
 DRAW_DIR = source/draw
 MAP_DIR  = source/map
-MLX_DIR = ./mlx
+LIBFT_DIR = ./libs/my_libft
+MLX_DIR = ./libs/mlx
 
-SRCS =	source/main.c \
-		${MAP_DIR}/init_map.c \
-
+SRCS =	$(SOURCE_DIR)/main.c \
+		$(SOURCE_DIR)/free.c \
+		$(MAP_DIR)/init_map.c \
+		$(DRAW_DIR)/ground.c \
 
 OBJS = ${SRCS:.c=.o}
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -Iincludes -Ilibs/my_libft -Imlx
+RM = rm -rf
 
-all: ${NAME}
+CFLAGS = -Wall -Wextra -Werror -Iincludes -I$(LIBFT_DIR) -I$(MLX_DIR)
+MLX_FLAGS = -L$(MLX_DIR) -lmlx -lX11 -lXext -lm
 
-${NAME}: ${OBJS}
-	${MAKE} -C ./libs/my_libft
-	${CC} ${CFLAGS} ${OBJS} ./libs/my_libft/libft.a -o ${NAME}
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+all: $(NAME)
+
+$(NAME): $(OBJS)
+	$(MAKE) -C $(LIBFT_DIR)
+	$(MAKE) -C $(MLX_DIR)
+	$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_DIR) -lft $(MLX_FLAGS) -o $(NAME)
 
 clean:
 	${RM} ${OBJS}
-	${MAKE} -C ./libs/my_libft fclean
+	$(MAKE) -C $(LIBFT_DIR) clean
+	$(MAKE) -C $(MLX_DIR) clean
 
 fclean: clean
 	${RM} ${NAME}
