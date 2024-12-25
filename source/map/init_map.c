@@ -6,7 +6,7 @@
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:18:02 by umut              #+#    #+#             */
-/*   Updated: 2024/12/22 21:48:48 by umut             ###   ########.fr       */
+/*   Updated: 2024/12/25 19:55:34 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int	init_map(t_game *game)
 		return (-1);
 	}
     map_structure = malloc(sizeof(char *) * (line_count + 1));
+	if (!map_structure)
+		return (-1);
     if (generate_map_struct(game->filename, map_structure) < 0 || !map_structure)
     {
         free(map_structure);

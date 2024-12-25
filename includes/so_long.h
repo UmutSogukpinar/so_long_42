@@ -6,7 +6,7 @@
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 16:56:43 by umut              #+#    #+#             */
-/*   Updated: 2024/12/24 23:14:54 by umut             ###   ########.fr       */
+/*   Updated: 2024/12/25 18:29:59 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,6 @@ typedef struct s_game
 
 void	free_game(t_game *game);
 void free_game_sub_one(t_game *game);
+void free_game_sub_two(t_game *game);
 
 #endif

@@ -9,7 +9,6 @@ MLX_DIR = ./libs/mlx
 SRCS =	$(SOURCE_DIR)/main.c \
 		$(SOURCE_DIR)/free.c \
 		$(MAP_DIR)/init_map.c \
-		$(DRAW_DIR)/ground.c \
 
 OBJS = ${SRCS:.c=.o}
 

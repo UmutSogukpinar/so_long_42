@@ -6,7 +6,7 @@
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 15:10:50 by umut              #+#    #+#             */
-/*   Updated: 2024/12/24 23:13:19 by umut             ###   ########.fr       */
+/*   Updated: 2024/12/25 19:48:52 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	init_game_att(t_game *game, char *arg)
 	game -> screen_x = (count_columns(game -> filename) * CELL_LEN);
 	game -> name = ft_strdup("so_long");
 	is_successful = init_map(game);
-	if (is_successful == -1)
+	if (is_successful == -1 || game -> name == NULL)
 	{
 		perror("Error");
 		free_game(game);
@@ -52,6 +52,12 @@ int	main(int arg_number, char **args)
 	{
 		init_game_att(&game, args[1]);
 		game.mlx = mlx_init();
+		if (game.mlx == NULL)
+		{
+			perror("Error");
+			free_game(&game);
+			return (1);
+		}
 		game.screen = mlx_new_window(game.mlx, game.screen_x, game.screen_y, game.name);
 		if (game.screen == NULL)
 		{
@@ -60,8 +66,8 @@ int	main(int arg_number, char **args)
 			return (1);
 		}
 		mlx_hook(game.screen, 17, 0, close_window, NULL);
-		mlx_loop(game.mlx);
-		draw_ground(&game);
+		//draw_ground(&game);
+		//mlx_loop(game.mlx);
 	}
 	free_game(&game);
 	return (0);
