@@ -6,7 +6,7 @@
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 15:10:50 by umut              #+#    #+#             */
-/*   Updated: 2024/12/25 23:10:25 by umut             ###   ########.fr       */
+/*   Updated: 2024/12/26 01:49:02 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,21 @@
 #include "so_long.h"
 #include "map.h"
 #include "libft.h"
-#include "stdio.h"
+#include "../libs/my_printf/ft_printf.h"
 #include "draw.h"
+#include "stdio.h"
 
 int	close_window(void *param)
 {
+	t_game	*game;
+
 	if (param == NULL)
-    {
-        printf("param is NULL\n");
-        exit(1);
-    }
+	{
+		ft_printf("param is NULL\n");
+		exit(1);
+	}
 	(void)param;
-	t_game *game = (t_game *)param;
+	game = (t_game *)param;
 	if (game)
 	{
 		free_game(game);
@@ -38,9 +41,7 @@ int	init_game_att(t_game *game, char *arg)
 {
 	int	is_successful;
 
-	is_successful = 1;
 	game -> filename = ft_strdup(arg);
-	game -> exit = 0;
 	game -> moves = 0;
 	game -> screen_y = (count_lines(game -> filename) * CELL_LEN);
 	game -> screen_x = (count_columns(game -> filename) * CELL_LEN);
@@ -73,8 +74,9 @@ int	init_game(t_game *game, char **args)
 		free_game(game);
 		return (-1);
 	}
+	//init_images(game);
 	mlx_hook(game -> screen, 17, 0, close_window, game);
-	//draw_ground(&game);
+	//draw_ground(game);
 	mlx_loop(game -> mlx);
 	return (0);
 }

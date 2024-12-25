@@ -1,6 +1,10 @@
 {
     "files.associations": {
         "unistd.h": "c",
-        "mlx.h": "c"
+        "mlx.h": "c",
+        "map.h": "c",
+        "so_long.h": "c",
+        "libft.h": "c",
+        "draw.h": "c"
     }
 }

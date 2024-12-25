@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.h                                              :+:      :+:    :+:   */
+/*   ft_helpers.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/22 11:35:25 by usogukpi          #+#    #+#             */
-/*   Updated: 2024/12/25 23:38:12 by umut             ###   ########.fr       */
+/*   Created: 2024/12/10 20:17:54 by umut              #+#    #+#             */
+/*   Updated: 2024/12/10 20:26:56 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAP_H
-# define MAP_H
+#ifndef FT_HELPERS_H
+# define FT_HELPERS_H
 
-#include "so_long.h"
+# include <stdarg.h>
 
-int	init_map(t_game *game);
+int		ft_put_char(char c);
+int		ft_str_len(char *str);
+int		ft_print_char(va_list args);
+int		ft_print_str(va_list args);
 
-int	is_line(char *line);
-int	count_lines(char *file_name);
-int	count_columns(char *file_name);
-int	generate_map_struct(char *file_name, char **map_struct);
+int		ft_print_int(va_list args, char *base);
+int		ft_print_uns(va_list args, char *base);
+
+int		ft_print_adress(va_list args, char *base);
 
 #endif
