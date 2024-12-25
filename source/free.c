@@ -6,7 +6,7 @@
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 22:01:22 by umut              #+#    #+#             */
-/*   Updated: 2024/12/25 20:03:34 by umut             ###   ########.fr       */
+/*   Updated: 2024/12/25 22:48:41 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 #include "libft.h"
 #include "stdio.h"
 
-void free_game(t_game *game)
+void	free_game(t_game *game)
 {
 	if (game == NULL)
-		return;
+		return ;
 	free_game_sub_one(game);
 	free_game_sub_two(game);
 }
 
-void free_game_sub_one(t_game *game)
+void	free_game_sub_one(t_game *game)
 {
 	int	i;
 
@@ -43,12 +43,11 @@ void free_game_sub_one(t_game *game)
 	}
 }
 
-void free_game_sub_two(t_game *game)
+void	free_game_sub_two(t_game *game)
 {
 	if (game -> screen)
 	{
 		mlx_destroy_window(game -> mlx, game -> screen);
-		free(game -> screen);
 	}
 	if (game -> mlx)
 	{
