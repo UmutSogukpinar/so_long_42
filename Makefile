@@ -9,6 +9,7 @@ MLX_DIR = ./libs/mlx
 
 SRCS =	$(SOURCE_DIR)/main.c \
 		$(SOURCE_DIR)/free.c \
+		$(SOURCE_DIR)/init.c \
 		$(MAP_DIR)/init_map.c \
 		$(DRAW_DIR)/draw_map.c \
 		$(DRAW_DIR)/init_images_one.c \

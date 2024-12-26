@@ -6,7 +6,7 @@
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 16:56:43 by umut              #+#    #+#             */
-/*   Updated: 2024/12/26 10:53:28 by umut             ###   ########.fr       */
+/*   Updated: 2024/12/27 00:30:32 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,13 @@ typedef struct s_game
 	t_player	player;
 
 }	t_game;
+
+void	init_game(t_game *game, char **args);
+void	init_game_att_one(t_game *game, char *arg);
+void	init_game_att_two(t_game *game);
+void	draw_images(t_game *game);
+
+int		close_window(void *param);
 
 void	free_game(t_game *game);
 
