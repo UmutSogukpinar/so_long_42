@@ -6,7 +6,7 @@
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 22:01:22 by umut              #+#    #+#             */
-/*   Updated: 2024/12/26 00:52:01 by umut             ###   ########.fr       */
+/*   Updated: 2024/12/26 10:30:14 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,12 @@ void	free_game_sub_one(t_game *game)
 
 void	free_game_sub_two(t_game *game)
 {
+	if (game -> ground_img)
+		mlx_destroy_image(game -> mlx, game -> ground_img);
+}
+
+void	free_game_sub_three(t_game *game)
+{
 	if (game -> screen)
 	{
 		mlx_destroy_window(game -> mlx, game -> screen);
@@ -55,10 +61,4 @@ void	free_game_sub_two(t_game *game)
 		mlx_destroy_display(game -> mlx);
 		free(game -> mlx);
 	}
-}
-
-void	free_game_sub_three(t_game *game)
-{
-	if (game -> ground_img)
-		mlx_destroy_image(game -> mlx, game -> ground_img);
 }

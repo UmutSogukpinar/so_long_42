@@ -6,7 +6,7 @@
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 15:10:50 by umut              #+#    #+#             */
-/*   Updated: 2024/12/26 01:49:02 by umut             ###   ########.fr       */
+/*   Updated: 2024/12/26 10:31:09 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,9 @@ int	init_game(t_game *game, char **args)
 		free_game(game);
 		return (-1);
 	}
-	//init_images(game);
+	init_images(game);
 	mlx_hook(game -> screen, 17, 0, close_window, game);
-	//draw_ground(game);
+	draw_ground(game);
 	mlx_loop(game -> mlx);
 	return (0);
 }
