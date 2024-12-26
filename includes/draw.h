@@ -6,7 +6,7 @@
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 23:09:38 by umut              #+#    #+#             */
-/*   Updated: 2024/12/26 01:16:29 by umut             ###   ########.fr       */
+/*   Updated: 2024/12/26 22:53:50 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@
 int	init_images(t_game *game);
 
 int	init_ground(t_game *game);
+int	init_fox(t_game *game);
 
 int	draw_ground(t_game *game);
+int	draw_fox(t_game *game);
 
 #endif

@@ -1,10 +1,10 @@
 /* XPM */
 static char * grass_xpm[] = {
 "50 50 4 1",
-"   c #FFFFFF", /* Beyaz boşluk */
-"G  c #32CD32", /* Canlı çimen yeşili */
-"B  c #228B22", /* Daha koyu çimen yeşili */
-"D  c #006400", /* Koyu gölge rengi */
+"   c #FFFFFF",
+"G  c #32CD32",
+"B  c #228B22",
+"D  c #006400",
 "GGGBGGGBGGGBGGGBGGGBGGGBGGGBGGGBGGGBGGGBGGGBGGGBGG",
 "GGGBGGGBGGGBGGGBGGGBGGGBGGGBGGGBGGGBGGGBGGGBGGGBGG",
 "GGGBGGGBGGGBGGGBGGGBGGGBGGGBGGGBGGGBGGGBGGGBGGGBGG",

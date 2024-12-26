@@ -6,17 +6,15 @@
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 15:10:50 by umut              #+#    #+#             */
-/*   Updated: 2024/12/26 10:31:09 by umut             ###   ########.fr       */
+/*   Updated: 2024/12/26 23:13:13 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libs/mlx/mlx.h"
-#include "so_long.h"
-#include "map.h"
-#include "libft.h"
-#include "../libs/my_printf/ft_printf.h"
-#include "draw.h"
 #include "stdio.h"
+#include "mlx.h"
+#include "libft.h"
+#include "map.h"
+#include "draw.h"
 
 int	close_window(void *param)
 {
@@ -24,7 +22,7 @@ int	close_window(void *param)
 
 	if (param == NULL)
 	{
-		ft_printf("param is NULL\n");
+		perror("Param is null");
 		exit(1);
 	}
 	(void)param;
@@ -41,13 +39,14 @@ int	init_game_att(t_game *game, char *arg)
 {
 	int	is_successful;
 
+	is_successful = 0;
 	game -> filename = ft_strdup(arg);
 	game -> moves = 0;
 	game -> screen_y = (count_lines(game -> filename) * CELL_LEN);
 	game -> screen_x = (count_columns(game -> filename) * CELL_LEN);
 	game -> name = ft_strdup("so_long");
-	is_successful = init_map(game);
-	if (is_successful == -1 || !(game -> name) || !(game -> filename))
+	is_successful += init_map(game);
+	if (is_successful < 0 || !(game -> name) || !(game -> filename))
 	{
 		perror("Error");
 		free_game(game);
@@ -77,6 +76,7 @@ int	init_game(t_game *game, char **args)
 	init_images(game);
 	mlx_hook(game -> screen, 17, 0, close_window, game);
 	draw_ground(game);
+	draw_fox(game);
 	mlx_loop(game -> mlx);
 	return (0);
 }

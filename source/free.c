@@ -6,7 +6,7 @@
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 22:01:22 by umut              #+#    #+#             */
-/*   Updated: 2024/12/26 10:30:14 by umut             ###   ########.fr       */
+/*   Updated: 2024/12/26 23:22:38 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ void	free_game_sub_two(t_game *game)
 {
 	if (game -> ground_img)
 		mlx_destroy_image(game -> mlx, game -> ground_img);
+	if (game -> fox_img)
+		mlx_destroy_image(game -> mlx, game -> fox_img);
 }
 
 void	free_game_sub_three(t_game *game)

@@ -6,7 +6,7 @@
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 16:56:43 by umut              #+#    #+#             */
-/*   Updated: 2024/12/26 00:42:08 by umut             ###   ########.fr       */
+/*   Updated: 2024/12/26 10:53:28 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_game
 	void		*screen;
 
 	void		*ground_img;
+	void		*fox_img;
 
 	int			screen_y;
 	int			screen_x;
