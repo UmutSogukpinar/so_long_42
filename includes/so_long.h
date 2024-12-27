@@ -6,7 +6,7 @@
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 16:56:43 by umut              #+#    #+#             */
-/*   Updated: 2024/12/27 00:30:32 by umut             ###   ########.fr       */
+/*   Updated: 2024/12/27 16:13:50 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,11 @@
 
 # define CELL_LEN 50
 
-typedef struct s_img
-{
-	void	*img;
-
-}	t_img;
-
 typedef struct s_player
 {
 	int		y;
 	int		x;
-	t_img	img;
+	void	*img;
 
 }	t_player;
 
@@ -38,12 +32,12 @@ typedef struct s_game
 	void		*screen;
 
 	void		*ground_img;
-	void		*fox_img;
+	void		*wall_img;
 
 	int			screen_y;
 	int			screen_x;
 	int			moves;
-	t_player	player;
+	t_player	*player;
 
 }	t_game;
 

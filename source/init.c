@@ -6,7 +6,7 @@
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 23:27:22 by umut              #+#    #+#             */
-/*   Updated: 2024/12/27 11:32:43 by umut             ###   ########.fr       */
+/*   Updated: 2024/12/27 15:45:38 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	init_game_att_one(t_game *game, char *arg)
 	game -> screen_y = (count_lines(game -> filename) * CELL_LEN);
 	game -> screen_x = (count_columns(game -> filename) * CELL_LEN);
 	game -> name = ft_strdup("so_long");
-	if (game -> screen_x < 0 || game -> screen_y < 0 || !(game -> name) || (game -> filename))
+	if (game -> screen_x < 0 || game -> screen_y < 0 || !(game -> name) || !(game -> filename))
 	{
 		perror("initializing game attributes cannot be done");
 		close_window(game);

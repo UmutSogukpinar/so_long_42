@@ -6,7 +6,7 @@
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 15:10:50 by umut              #+#    #+#             */
-/*   Updated: 2024/12/27 11:25:34 by umut             ###   ########.fr       */
+/*   Updated: 2024/12/27 16:14:18 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,28 +30,35 @@ int	close_window(void *param)
 	if (game)
 	{
 		free_game(game);
+		free(game -> player);
 		free(game);
 	}
 	exit(EXIT_SUCCESS);
 }
 
-void	init_game_structure(t_game *game)
+void	init_game_structure(t_game *game, t_player *player)
 {
 	game -> name = NULL;
 	game -> filename = NULL;
 	game -> map = NULL;
 	game -> ground_img = NULL;
-	game -> fox_img = NULL;
+	game -> wall_img = NULL;
 	game -> mlx = NULL;
 	game -> screen = NULL;
+	game -> player = NULL;
+	player -> img = NULL;
+	game -> player = player;
 }
 
 int	main(int arg_number, char **args)
 {
-	t_game	*game;
+	t_game		*game;
+	t_player	*player;
 
 	game = malloc(sizeof(t_game));
-	init_game_structure(game);
+	player = malloc(sizeof(t_player));
+	init_game_structure(game, player);
+
 	if (!game)
 		return (0);
 	if (arg_number != 2)
@@ -61,7 +68,6 @@ int	main(int arg_number, char **args)
 	}
 	init_game(game, args);
 	mlx_loop(game -> mlx);
-	free_game(game);
-	free(game);
+	close_window(game);
 	return (0);
 }

@@ -35,9 +35,9 @@ $(NAME): $(OBJS)
 
 clean:
 	${RM} ${OBJS}
-	$(MAKE) -C $(LIBFT_DIR) clean
+	$(MAKE) -C $(LIBFT_DIR) fclean
 	$(MAKE) -C $(MLX_DIR) clean
-	$(MAKE) -C $(PRINTF_DIR) clean
+	$(MAKE) -C $(PRINTF_DIR) fclean
 
 fclean: clean
 	${RM} ${NAME}

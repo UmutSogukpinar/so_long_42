@@ -6,7 +6,7 @@
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 00:26:26 by umut              #+#    #+#             */
-/*   Updated: 2024/12/27 11:16:23 by umut             ###   ########.fr       */
+/*   Updated: 2024/12/27 15:41:54 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ void init_fox(t_game *game)
         free(xpm_path);
         close_window(game);
     }
-    game -> fox_img = mlx_xpm_file_to_image(game->mlx, xpm_path, &width, &height);
-    if (!(game->fox_img))
+    game -> player -> img = mlx_xpm_file_to_image(game->mlx, xpm_path, &width, &height);
+    if (!(game-> player -> img))
     {
         perror("Error: Failed to load XPM image");
         free(xpm_path);
