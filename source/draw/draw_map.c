@@ -6,7 +6,7 @@
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 23:49:31 by umut              #+#    #+#             */
-/*   Updated: 2024/12/27 00:35:02 by umut             ###   ########.fr       */
+/*   Updated: 2024/12/27 11:27:54 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 #include "draw.h"
 #include "mlx.h"
 
-int	draw_ground(t_game *game)
+void	draw_ground(t_game *game)
 {
 	int	i;
 	int	j;
 
 	if (!(game) || !(game -> map) || !(game -> mlx) || !(game -> ground_img))
 	{
-		printf("%p\n", game -> map);
-		close_window(game);;
+		perror("Error: Invalid game structure or parameters");
+		close_window(game);
 	}
 	j = 0;
 	while ((game->map)[j] != NULL)
@@ -38,10 +38,9 @@ int	draw_ground(t_game *game)
 		}
 		j++;
 	}
-	return (0);
 }
 
-int	draw_fox(t_game *game)
+void	draw_fox(t_game *game)
 {
 	int		i;
 	int		j;
@@ -49,7 +48,7 @@ int	draw_fox(t_game *game)
 	if (!(game) || !(game -> map) || !(game -> mlx) || !(game -> fox_img))
 	{
 		perror("Error: Invalid game structure or parameters");
-		return (-1);
+		close_window(game);
 	}
 	j = 0;
 	while ((game->map)[j] != NULL)
@@ -64,5 +63,4 @@ int	draw_fox(t_game *game)
 		}
 		j++;
 	}
-	return (0);
 }

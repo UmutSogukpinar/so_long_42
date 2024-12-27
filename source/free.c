@@ -6,7 +6,7 @@
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 22:01:22 by umut              #+#    #+#             */
-/*   Updated: 2024/12/26 23:22:38 by umut             ###   ########.fr       */
+/*   Updated: 2024/12/27 11:36:26 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,25 @@ void	free_game_sub_one(t_game *game)
 
 	i = 0;
 	if (game -> filename)
+	{
 		free(game->filename);
+		game -> filename = NULL;
+	}
 	if (game -> name)
+	{
 		free(game->name);
+		game -> name = NULL;
+	}
 	if (game -> map != NULL)
 	{
 		while ((game->map)[i] != NULL)
 		{
 			free((game->map)[i]);
+			(game -> map)[i] = NULL;
 			i++;
 		}
 		free(game->map);
+		game -> map = NULL;
 	}
 }
 

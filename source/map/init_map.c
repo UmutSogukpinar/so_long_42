@@ -6,7 +6,7 @@
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:18:02 by umut              #+#    #+#             */
-/*   Updated: 2024/12/26 00:39:43 by umut             ###   ########.fr       */
+/*   Updated: 2024/12/27 11:40:55 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	init_map(t_game *game)
 	line_count = count_lines(game -> filename);
 	if (!game || !game->filename || line_count < 0)
 	{
-		perror("Error:");
+		perror("Error at initializing map attribute:");
 		return (-1);
 	}
 	map_structure = malloc(sizeof(char *) * (line_count + 1));
