@@ -1,26 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.h                                              :+:      :+:    :+:   */
+/*   get_numbers.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/22 11:35:25 by usogukpi          #+#    #+#             */
-/*   Updated: 2024/12/29 00:34:31 by umut             ###   ########.fr       */
+/*   Created: 2024/12/29 00:27:44 by umut              #+#    #+#             */
+/*   Updated: 2024/12/29 00:33:18 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAP_H
-# define MAP_H
+#include "map.h"
+#include "stddef.h"
 
-#include "so_long.h"
+int	get_total_collectible(t_game *game)
+{
+	int	i;
+	int	j;
+	int	acc;
 
-int	init_map(t_game *game);
-
-int	is_line(char *line);
-int	count_lines(char *file_name);
-int	count_columns(char *file_name);
-int	generate_map_struct(char *file_name, char **map_struct);
-
-int	get_total_collectible(t_game *game);
-#endif
+	j = 0;
+	acc = 0;
+	while ((game -> map)[j] != NULL)
+	{
+		i = 0;
+		while ((game -> map)[j][i] != '\0')
+		{
+			if ((game -> map)[j][i] == 'C')
+				acc += 1;
+			i++;
+		}
+		j++;
+	}
+	return (acc);
+}

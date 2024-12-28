@@ -6,7 +6,7 @@
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 16:56:43 by umut              #+#    #+#             */
-/*   Updated: 2024/12/28 23:21:55 by umut             ###   ########.fr       */
+/*   Updated: 2024/12/29 00:26:29 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ typedef struct s_game
 	int			screen_y;
 	int			screen_x;
 	int			moves;
+	int			total_collectible;
+	int			gathered_collectible;
 	t_player	*player;
 
 }	t_game;

@@ -6,7 +6,7 @@
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 22:49:05 by umut              #+#    #+#             */
-/*   Updated: 2024/12/28 22:50:04 by umut             ###   ########.fr       */
+/*   Updated: 2024/12/29 00:12:42 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,14 @@
 int	is_wall(char c)
 {
 	if (c == '1')
+		return (1);
+	else
+		return (0);
+}
+
+int	is_ground(char c)
+{
+	if (c == '0')
 		return (1);
 	else
 		return (0);

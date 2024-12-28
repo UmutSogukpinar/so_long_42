@@ -13,6 +13,7 @@ SRCS =	$(SOURCE_DIR)/main.c \
 		$(SOURCE_DIR)/init.c \
 		$(SOURCE_DIR)/key_hook.c \
 		$(MAP_DIR)/init_map.c \
+		$(MAP_DIR)/get_numbers.c \
 		$(DRAW_DIR)/draw_map.c \
 		$(DRAW_DIR)/init_images_one.c \
 		$(DRAW_DIR)/init_images_two.c \
