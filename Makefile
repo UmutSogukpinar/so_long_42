@@ -3,6 +3,7 @@ NAME = so_long
 SOURCE_DIR = ./source
 DRAW_DIR = source/draw
 MAP_DIR  = source/map
+MOVE_DIR = source/movement
 LIBFT_DIR = ./libs/my_libft
 PRINTF_DIR = ./libs/my_printf
 MLX_DIR = ./libs/mlx
@@ -10,9 +11,12 @@ MLX_DIR = ./libs/mlx
 SRCS =	$(SOURCE_DIR)/main.c \
 		$(SOURCE_DIR)/free.c \
 		$(SOURCE_DIR)/init.c \
+		$(SOURCE_DIR)/key_hook.c \
 		$(MAP_DIR)/init_map.c \
 		$(DRAW_DIR)/draw_map.c \
 		$(DRAW_DIR)/init_images_one.c \
+		$(MOVE_DIR)/movement.c \
+		$(MOVE_DIR)/check.c \
 
 OBJS = ${SRCS:.c=.o}
 

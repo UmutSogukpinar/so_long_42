@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_hook.c                                         :+:      :+:    :+:   */
+/*   movement.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/28 11:29:34 by umut              #+#    #+#             */
-/*   Updated: 2024/12/28 22:54:25 by umut             ###   ########.fr       */
+/*   Created: 2024/12/28 22:44:01 by umut              #+#    #+#             */
+/*   Updated: 2024/12/28 22:54:40 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "movement.h"
-#include "mlx.h"
-#include "ft_printf.h"
+#ifndef MOVEMENT_H
+# define MOVEMENT_H
 
-int	key_hook(int keycode, t_game *game)
-{
-	if (keycode == 65307)
-	{
-		ft_printf("User enter \"ESC\" button. Game shuts down");
-		close_window(game);
-	}
-	else if (keycode == 119)
-		forward_movement(game);
-	else if (keycode == 115)
-		backward_movement(game);
-	return (0);
-}
+#include "so_long.h"
+
+void	forward_movement(t_game *game);
+void	backward_movement(t_game *game);
+
+int		is_wall(char c);
+
+#endif

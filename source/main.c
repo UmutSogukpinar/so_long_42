@@ -6,7 +6,7 @@
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 15:10:50 by umut              #+#    #+#             */
-/*   Updated: 2024/12/27 16:15:01 by umut             ###   ########.fr       */
+/*   Updated: 2024/12/28 22:20:48 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ int	main(int arg_number, char **args)
 		return (-1);
 	}
 	init_game(game, args);
+	mlx_key_hook(game -> screen, key_hook, game);
 	mlx_loop(game -> mlx);
 	close_window(game);
 	return (0);

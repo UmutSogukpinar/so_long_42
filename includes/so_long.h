@@ -6,7 +6,7 @@
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 16:56:43 by umut              #+#    #+#             */
-/*   Updated: 2024/12/28 10:56:19 by umut             ###   ########.fr       */
+/*   Updated: 2024/12/28 22:34:10 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,11 @@ void	init_game_att_one(t_game *game, char *arg);
 void	init_game_att_two(t_game *game);
 void	draw_images(t_game *game);
 
+int		key_hook(int keycode, t_game *game);
 int		close_window(void *param);
 
-void	free_game(t_game *game);
 
+void	free_game(t_game *game);
 void	free_game_sub_one(t_game *game);
 void	free_game_sub_two(t_game *game);
 void	free_game_sub_three(t_game *game);
