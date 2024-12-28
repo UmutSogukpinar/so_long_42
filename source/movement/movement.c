@@ -6,7 +6,7 @@
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 22:30:29 by umut              #+#    #+#             */
-/*   Updated: 2024/12/28 22:55:50 by umut             ###   ########.fr       */
+/*   Updated: 2024/12/28 23:00:36 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,36 @@ void	backward_movement(t_game *game)
 		return ;
 	(game -> map)[(game -> player -> y) + 1][game -> player -> x] = current;
 	(game -> map)[game -> player -> y][game -> player -> x] = target;
-	game -> player -> y -= 1;
+	game -> player -> y += 1;
+	draw_images(game);
+}
+
+void	right_movement(t_game *game)
+{
+	char	target;
+	char	current;
+
+	target = (game -> map)[(game -> player -> y)][(game -> player -> x) + 1];
+	current = (game -> map)[game -> player -> y][game -> player -> x];
+	if (is_wall(target))
+		return ;
+	(game -> map)[(game -> player -> y)][(game -> player -> x) + 1] = current;
+	(game -> map)[game -> player -> y][game -> player -> x] = target;
+	game -> player -> x += 1;
+	draw_images(game);
+}
+
+void	left_movement(t_game *game)
+{
+	char	target;
+	char	current;
+
+	target = (game -> map)[(game -> player -> y)][(game -> player -> x) - 1];
+	current = (game -> map)[game -> player -> y][game -> player -> x];
+	if (is_wall(target))
+		return ;
+	(game -> map)[(game -> player -> y)][(game -> player -> x) - 1] = current;
+	(game -> map)[game -> player -> y][game -> player -> x] = target;
+	game -> player -> x += 1;
 	draw_images(game);
 }

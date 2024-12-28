@@ -15,6 +15,7 @@ SRCS =	$(SOURCE_DIR)/main.c \
 		$(MAP_DIR)/init_map.c \
 		$(DRAW_DIR)/draw_map.c \
 		$(DRAW_DIR)/init_images_one.c \
+		$(DRAW_DIR)/init_images_two.c \
 		$(MOVE_DIR)/movement.c \
 		$(MOVE_DIR)/check.c \
 
