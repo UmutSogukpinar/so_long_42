@@ -6,7 +6,7 @@
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 15:10:50 by umut              #+#    #+#             */
-/*   Updated: 2024/12/27 16:14:18 by umut             ###   ########.fr       */
+/*   Updated: 2024/12/27 16:15:01 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ int	main(int arg_number, char **args)
 	game = malloc(sizeof(t_game));
 	player = malloc(sizeof(t_player));
 	init_game_structure(game, player);
-
 	if (!game)
 		return (0);
 	if (arg_number != 2)
