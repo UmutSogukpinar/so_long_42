@@ -6,7 +6,7 @@
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 15:10:50 by umut              #+#    #+#             */
-/*   Updated: 2024/12/29 00:38:45 by umut             ###   ########.fr       */
+/*   Updated: 2024/12/29 01:43:27 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ void	init_game_structure(t_game *game, t_player *player)
 	game -> map = NULL;
 	game -> ground_img = NULL;
 	game -> wall_img = NULL;
+	game -> collect_img = NULL;
+	game -> exit_img = NULL;
 	game -> mlx = NULL;
 	game -> screen = NULL;
 	game -> player = NULL;

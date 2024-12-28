@@ -6,7 +6,7 @@
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 00:26:26 by umut              #+#    #+#             */
-/*   Updated: 2024/12/28 23:29:11 by umut             ###   ########.fr       */
+/*   Updated: 2024/12/29 01:47:08 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	init_images(t_game *game)
 	init_fox(game);
 	init_wall(game);
     init_collectible(game);
+	init_exit(game);
 }
 
 void	init_ground(t_game *game)
