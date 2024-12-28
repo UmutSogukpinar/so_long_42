@@ -4,6 +4,7 @@ SOURCE_DIR = ./source
 DRAW_DIR = source/draw
 MAP_DIR  = source/map
 MOVE_DIR = source/movement
+CHECK_DIR = source/check
 LIBFT_DIR = ./libs/my_libft
 PRINTF_DIR = ./libs/my_printf
 MLX_DIR = ./libs/mlx
@@ -20,6 +21,7 @@ SRCS =	$(SOURCE_DIR)/main.c \
 		$(MOVE_DIR)/movement.c \
 		$(MOVE_DIR)/movement_two.c \
 		$(MOVE_DIR)/check.c \
+		$(CHECK_DIR)/check_collect.c \
 
 OBJS = ${SRCS:.c=.o}
 

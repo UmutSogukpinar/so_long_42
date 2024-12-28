@@ -6,7 +6,7 @@
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 15:10:50 by umut              #+#    #+#             */
-/*   Updated: 2024/12/29 01:43:27 by umut             ###   ########.fr       */
+/*   Updated: 2024/12/29 02:07:28 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ int	main(int arg_number, char **args)
 		return (-1);
 	}
 	init_game(game, args);
-	printf("total collectible %d \n", game -> total_collectible);
 	mlx_key_hook(game -> screen, key_hook, game);
 	mlx_loop(game -> mlx);
 	close_window(game);
