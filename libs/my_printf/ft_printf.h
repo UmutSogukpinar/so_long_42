@@ -1,30 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw.h                                             :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/24 23:09:38 by umut              #+#    #+#             */
-/*   Updated: 2024/12/28 23:23:35 by umut             ###   ########.fr       */
+/*   Created: 2024/12/10 20:18:17 by umut              #+#    #+#             */
+/*   Updated: 2024/12/10 20:18:18 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DRAW_H
-# define DRAW_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-#include "so_long.h"
+# include <stdarg.h>
 
-void	init_images(t_game *game);
-
-void	init_ground(t_game *game);
-void	init_fox(t_game *game);
-void	init_wall(t_game *game);
-void	init_collectible(t_game *game);
-
-void	draw_ground(t_game *game);
-void	draw_fox(t_game *game);
-void	draw_wall(t_game *game);
-void	draw_collectible(t_game *game);
+int		ft_printf(const char *content, ...);
 
 #endif

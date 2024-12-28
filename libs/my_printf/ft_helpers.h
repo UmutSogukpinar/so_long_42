@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw.h                                             :+:      :+:    :+:   */
+/*   ft_helpers.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/24 23:09:38 by umut              #+#    #+#             */
-/*   Updated: 2024/12/28 23:23:35 by umut             ###   ########.fr       */
+/*   Created: 2024/12/10 20:17:54 by umut              #+#    #+#             */
+/*   Updated: 2024/12/10 20:26:56 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DRAW_H
-# define DRAW_H
+#ifndef FT_HELPERS_H
+# define FT_HELPERS_H
 
-#include "so_long.h"
+# include <stdarg.h>
 
-void	init_images(t_game *game);
+int		ft_put_char(char c);
+int		ft_str_len(char *str);
+int		ft_print_char(va_list args);
+int		ft_print_str(va_list args);
 
-void	init_ground(t_game *game);
-void	init_fox(t_game *game);
-void	init_wall(t_game *game);
-void	init_collectible(t_game *game);
+int		ft_print_int(va_list args, char *base);
+int		ft_print_uns(va_list args, char *base);
 
-void	draw_ground(t_game *game);
-void	draw_fox(t_game *game);
-void	draw_wall(t_game *game);
-void	draw_collectible(t_game *game);
+int		ft_print_adress(va_list args, char *base);
 
 #endif

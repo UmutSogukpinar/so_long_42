@@ -1,30 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw.h                                             :+:      :+:    :+:   */
+/*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/24 23:09:38 by umut              #+#    #+#             */
-/*   Updated: 2024/12/28 23:23:35 by umut             ###   ########.fr       */
+/*   Created: 2024/12/28 22:49:05 by umut              #+#    #+#             */
+/*   Updated: 2024/12/29 00:46:47 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DRAW_H
-# define DRAW_H
+#include "map.h"
 
-#include "so_long.h"
+int	is_wall(char c)
+{
+	if (c == '1')
+		return (1);
+	else
+		return (0);
+}
 
-void	init_images(t_game *game);
+int	is_ground(char c)
+{
+	if (c == '0')
+		return (1);
+	else
+		return (0);
+}
 
-void	init_ground(t_game *game);
-void	init_fox(t_game *game);
-void	init_wall(t_game *game);
-void	init_collectible(t_game *game);
+int	is_collectible(char c)
+{
+	if (c == 'C')
+		return (1);
+	else
+		return (0);
+}
 
-void	draw_ground(t_game *game);
-void	draw_fox(t_game *game);
-void	draw_wall(t_game *game);
-void	draw_collectible(t_game *game);
-
-#endif
+int	is_exit(char c)
+{
+	if (c == 'E')
+		return (1);
+	else
+		return (0);
+}

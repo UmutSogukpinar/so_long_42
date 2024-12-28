@@ -6,13 +6,12 @@
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:18:02 by umut              #+#    #+#             */
-/*   Updated: 2024/12/22 21:48:48 by umut             ###   ########.fr       */
+/*   Updated: 2024/12/29 00:38:39 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx.h"
 #include "libft.h"
-#include "so_long.h"
 #include "map.h"
 #include <fcntl.h>
 #include <unistd.h>
@@ -24,25 +23,23 @@ int	init_map(t_game *game)
 	int		line_count;
 
 	line_count = count_lines(game -> filename);
-	if (!game || !game->filename)
-    {
-		printf("Error: Invalid game structure or filename.\n");
-		return (-1);
-	}
-	if (line_count < 0)
+	if (!(game) || !(game->filename) || line_count < 0)
 	{
-		printf("Error: Failed to count lines in the map file.\n");
+		perror("Error at initializing map attribute:");
 		return (-1);
 	}
-    map_structure = malloc(sizeof(char *) * (line_count + 1));
-    if (generate_map_struct(game->filename, map_structure) < 0 || !map_structure)
-    {
-        free(map_structure);
-        printf("Error:\n");
-        return (-1);
-    }
-    game->map = map_structure;
-    return 0;
+	map_structure = malloc(sizeof(char *) * (line_count + 1));
+	if (!map_structure)
+		return (-1);
+	if (generate_map_struct(game->filename, map_structure) < 0
+		|| !map_structure)
+	{
+		free(map_structure);
+		perror("Error:");
+		return (-1);
+	}
+	game->map = map_structure;
+	return (0);
 }
 
 int	is_line(char *line)
@@ -66,19 +63,19 @@ int	count_lines(char *file_name)
 	char	*line;
 
 	fd = open(file_name, O_RDONLY);
-    if (fd < 0)
-    {
-        printf("Error: Unable to open file.\n");
-        return (-1);
-    }
+	if (fd < 0)
+	{
+		perror("Error:");
+		return (-1);
+	}
 	line = get_next_line(fd);
 	counter = 0;
-    while (line != NULL)
-    {
+	while (line != NULL)
+	{
 		counter++;
 		free(line);
 		line = get_next_line(fd);
-    }
+	}
 	close(fd);
 	return (counter);
 }
@@ -92,7 +89,7 @@ int	count_columns(char *file_name)
 	fd = open(file_name, O_RDONLY);
 	if (fd < 0)
 	{
-		printf("Error: Unable to open file.\n");
+		perror("Error:");
 		return (-1);
 	}
 	line = get_next_line(fd);
@@ -128,4 +125,3 @@ int	generate_map_struct(char *file_name, char **map_struct)
 	close(fd);
 	return (0);
 }
-
