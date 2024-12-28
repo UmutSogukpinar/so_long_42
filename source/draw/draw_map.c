@@ -6,7 +6,7 @@
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 23:49:31 by umut              #+#    #+#             */
-/*   Updated: 2024/12/27 16:17:34 by umut             ###   ########.fr       */
+/*   Updated: 2024/12/28 11:33:54 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,18 +51,20 @@ void	draw_fox(t_game *game)
 		perror("Error: Invalid game structure or parameters");
 		close_window(game);
 	}
-	j = 0;
-	while ((game -> map)[j] != NULL)
+	j = -1;
+	while ((game -> map)[++j] != NULL)
 	{
-		i = 0;
-		while ((game -> map)[j][i] != '\0')
+		i = -1;
+		while ((game -> map)[j][++i] != '\0')
 		{
 			if ((game -> map)[j][i] == 'e')
+			{
 				mlx_put_image_to_window(game -> mlx, game -> screen,
 					game -> player -> img, i * CELL_LEN, j * CELL_LEN);
-			i++;
+				game -> player -> x = i;
+				game -> player -> y = j;
+			}
 		}
-		j++;
 	}
 }
 
