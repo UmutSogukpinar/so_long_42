@@ -18,6 +18,7 @@ SRCS =	$(SOURCE_DIR)/main.c \
 		$(DRAW_DIR)/init_images_one.c \
 		$(DRAW_DIR)/init_images_two.c \
 		$(MOVE_DIR)/movement.c \
+		$(MOVE_DIR)/movement_two.c \
 		$(MOVE_DIR)/check.c \
 
 OBJS = ${SRCS:.c=.o}

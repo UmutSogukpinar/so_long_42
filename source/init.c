@@ -6,7 +6,7 @@
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 23:27:22 by umut              #+#    #+#             */
-/*   Updated: 2024/12/29 00:38:59 by umut             ###   ########.fr       */
+/*   Updated: 2024/12/29 01:25:53 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	init_game(t_game *game, char **args)
 void	init_game_att_one(t_game *game, char *arg)
 {
 	game -> filename = ft_strdup(arg);
-	game -> moves = 0;
 	game -> gathered_collectible = 0;
 	game -> screen_y = (count_lines(game -> filename) * CELL_LEN);
 	game -> screen_x = (count_columns(game -> filename) * CELL_LEN);
@@ -38,6 +37,9 @@ void	init_game_att_one(t_game *game, char *arg)
 	}
 	init_map(game);
 	game -> total_collectible = get_total_collectible(game);
+	game -> moves = 0;
+	game -> player -> x = get_player_x_axis(game);
+	game -> player -> y = get_player_y_axis(game);
 }
 
 void	init_game_att_two(t_game *game)

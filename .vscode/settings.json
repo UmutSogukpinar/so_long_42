@@ -5,6 +5,7 @@
         "map.h": "c",
         "so_long.h": "c",
         "libft.h": "c",
-        "draw.h": "c"
+        "draw.h": "c",
+        "movement.h": "c"
     }
 }

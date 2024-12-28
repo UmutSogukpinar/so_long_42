@@ -6,7 +6,7 @@
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 22:44:01 by umut              #+#    #+#             */
-/*   Updated: 2024/12/29 00:12:54 by umut             ###   ########.fr       */
+/*   Updated: 2024/12/29 01:32:57 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,16 @@
 #include "so_long.h"
 
 void	forward_movement(t_game *game);
+void	forward_movement_two(t_game *game, char target, char current);
 void	backward_movement(t_game *game);
+void	backward_movement_two(t_game *game, char target, char current);
 void	right_movement(t_game *game);
+void	right_movement_two(t_game *game, char target, char current);
 void	left_movement(t_game *game);
+void	left_movement_two(t_game *game, char target, char current);
 
 int		is_wall(char c);
 int		is_ground(char c);
+int		is_collectible(char c);
 
 #endif

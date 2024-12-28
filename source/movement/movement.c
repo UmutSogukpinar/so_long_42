@@ -6,7 +6,7 @@
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 22:30:29 by umut              #+#    #+#             */
-/*   Updated: 2024/12/29 00:17:33 by umut             ###   ########.fr       */
+/*   Updated: 2024/12/29 01:34:01 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ void	forward_movement(t_game *game)
 
 	target = (game -> map)[(game -> player -> y) - 1][game -> player -> x];
 	current = (game -> map)[game -> player -> y][game -> player -> x];
-	if (is_wall(target))
-		return ;
 	if (is_ground(target))
 	{
 		(game -> map)[(game -> player -> y) - 1][game -> player -> x] = current;
@@ -33,6 +31,10 @@ void	forward_movement(t_game *game)
 		ft_printf("number of movements: %d\n", (game -> moves));
 		draw_images(game);
 	}
+	else if (is_wall(target))
+		return ;
+	else if (is_collectible(target))
+		forward_movement_two(game, target, current);
 }
 
 void	backward_movement(t_game *game)
@@ -42,8 +44,6 @@ void	backward_movement(t_game *game)
 
 	target = (game -> map)[(game -> player -> y) + 1][game -> player -> x];
 	current = (game -> map)[game -> player -> y][game -> player -> x];
-	if (is_wall(target))
-		return ;
 	if (is_ground(target))
 	{
 		(game -> map)[(game -> player -> y) + 1][game -> player -> x] = current;
@@ -53,6 +53,10 @@ void	backward_movement(t_game *game)
 		ft_printf("number of movements: %d\n", (game -> moves));
 		draw_images(game);
 	}
+	else if (is_wall(target))
+		return ;
+	else if (is_collectible(target))
+		backward_movement_two(game, target, current);
 }
 
 void	right_movement(t_game *game)
@@ -62,8 +66,6 @@ void	right_movement(t_game *game)
 
 	target = (game -> map)[(game -> player -> y)][(game -> player -> x) + 1];
 	current = (game -> map)[game -> player -> y][game -> player -> x];
-	if (is_wall(target))
-		return ;
 	if (is_ground(target))
 	{
 		(game -> map)[(game -> player -> y)][(game -> player -> x) + 1] = current;
@@ -73,6 +75,10 @@ void	right_movement(t_game *game)
 		ft_printf("number of movements: %d\n", (game -> moves));
 		draw_images(game);
 	}
+	else if (is_wall(target))
+		return ;
+	else if (is_collectible(target))
+		right_movement_two(game, target, current);
 }
 
 void	left_movement(t_game *game)
@@ -82,15 +88,17 @@ void	left_movement(t_game *game)
 
 	target = (game -> map)[(game -> player -> y)][(game -> player -> x) - 1];
 	current = (game -> map)[game -> player -> y][game -> player -> x];
-	if (is_wall(target))
-		return ;
 	if (is_ground(target))
 	{
 		(game -> map)[(game -> player -> y)][(game -> player -> x) - 1] = current;
 		(game -> map)[game -> player -> y][game -> player -> x] = target;
-		(game -> player -> x) += 1;
+		(game -> player -> x) -= 1;
 		(game -> moves) += 1;
 		ft_printf("number of movements: %d\n", (game -> moves));
 		draw_images(game);
 	}
+	else if (is_wall(target))
+		return ;
+	else if (is_collectible(target))
+		left_movement_two(game, target, current);
 }
