@@ -6,7 +6,7 @@
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 15:10:50 by umut              #+#    #+#             */
-/*   Updated: 2024/12/29 02:07:28 by umut             ###   ########.fr       */
+/*   Updated: 2024/12/29 02:25:13 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "mlx.h"
 #include "libft.h"
 #include "map.h"
+#include "check.h"
 #include "draw.h"
 
 int	close_window(void *param)
@@ -68,6 +69,7 @@ int	main(int arg_number, char **args)
 		return (-1);
 	}
 	init_game(game, args);
+	game_check(game);
 	mlx_key_hook(game -> screen, key_hook, game);
 	mlx_loop(game -> mlx);
 	close_window(game);

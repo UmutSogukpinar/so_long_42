@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.h                                              :+:      :+:    :+:   */
+/*   game_check.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/22 11:35:25 by usogukpi          #+#    #+#             */
-/*   Updated: 2024/12/29 02:21:24 by umut             ###   ########.fr       */
+/*   Created: 2024/12/29 02:14:19 by umut              #+#    #+#             */
+/*   Updated: 2024/12/29 02:26:28 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAP_H
-# define MAP_H
-
 #include "so_long.h"
+#include "check.h"
+#include "map.h"
+#include "ft_printf.h"
 
-int	init_map(t_game *game);
+void	game_check(t_game *game)
+{
+	game_check_utils_one(game);
+}
 
-int	is_line(char *line);
-int	count_lines(char *file_name);
-int	count_columns(char *file_name);
-int	generate_map_struct(char *file_name, char **map_struct);
-
-int	get_total_collectible(t_game *game);
-int	get_total_player(t_game *game);
-int	get_total_exit(t_game *game);
-int	get_player_x_axis(t_game *game);
-int	get_player_y_axis(t_game *game);
-
-#endif
+void	game_check_utils_one(t_game *game)
+{
+	if (get_total_player(game) != 1)
+	{
+		ft_printf("Only can be one player! Game shuts down.");
+		close_window(game);
+	}
+	if (get_total_exit(game) != 1)
+	{
+		ft_printf("Only can be one exit! Game shuts down.");
+		close_window(game);
+	}
+}
