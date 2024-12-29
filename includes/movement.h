@@ -6,7 +6,7 @@
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 22:44:01 by umut              #+#    #+#             */
-/*   Updated: 2024/12/29 01:32:57 by umut             ###   ########.fr       */
+/*   Updated: 2024/12/29 01:54:34 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@ void	left_movement_two(t_game *game, char target, char current);
 int		is_wall(char c);
 int		is_ground(char c);
 int		is_collectible(char c);
+int		is_exit(char c);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:18:02 by umut              #+#    #+#             */
-/*   Updated: 2024/12/29 00:38:39 by umut             ###   ########.fr       */
+/*   Updated: 2024/12/29 11:46:19 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,8 @@ int	generate_map_struct(char *file_name, char **map_struct)
 {
 	int		i;
 	int		fd;
-	char	*line;	
+	char	*line;
+	char	*newline_ref;
 
 	fd = open(file_name, O_RDONLY);
 	if (fd < 0)
@@ -117,6 +118,9 @@ int	generate_map_struct(char *file_name, char **map_struct)
 	i = 0;
 	while (line)
 	{
+		newline_ref = ft_strrchr(line, '\n');
+		if (newline_ref)
+			newline_ref[0] = '\0';
 		map_struct[i] = line;
 		i++;
 		line = get_next_line(fd);

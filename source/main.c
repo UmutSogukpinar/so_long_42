@@ -6,7 +6,7 @@
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 15:10:50 by umut              #+#    #+#             */
-/*   Updated: 2024/12/29 00:38:45 by umut             ###   ########.fr       */
+/*   Updated: 2024/12/29 02:25:13 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "mlx.h"
 #include "libft.h"
 #include "map.h"
+#include "check.h"
 #include "draw.h"
 
 int	close_window(void *param)
@@ -43,6 +44,8 @@ void	init_game_structure(t_game *game, t_player *player)
 	game -> map = NULL;
 	game -> ground_img = NULL;
 	game -> wall_img = NULL;
+	game -> collect_img = NULL;
+	game -> exit_img = NULL;
 	game -> mlx = NULL;
 	game -> screen = NULL;
 	game -> player = NULL;
@@ -66,7 +69,7 @@ int	main(int arg_number, char **args)
 		return (-1);
 	}
 	init_game(game, args);
-	printf("total collectible %d \n", game -> total_collectible);
+	game_check(game);
 	mlx_key_hook(game -> screen, key_hook, game);
 	mlx_loop(game -> mlx);
 	close_window(game);

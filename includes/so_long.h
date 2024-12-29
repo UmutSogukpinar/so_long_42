@@ -6,7 +6,7 @@
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 16:56:43 by umut              #+#    #+#             */
-/*   Updated: 2024/12/29 00:26:29 by umut             ###   ########.fr       */
+/*   Updated: 2024/12/29 01:42:37 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_game
 	void		*ground_img;
 	void		*wall_img;
 	void		*collect_img;
+	void		*exit_img;
 
 	int			screen_y;
 	int			screen_x;
