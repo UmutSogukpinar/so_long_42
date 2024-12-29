@@ -6,7 +6,7 @@
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/29 02:31:01 by umut              #+#    #+#             */
-/*   Updated: 2024/12/29 12:15:54 by umut             ###   ########.fr       */
+/*   Updated: 2024/12/29 12:28:55 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,35 +52,43 @@ int	check_map_sides(t_game *game)
 			return (-1);
 	return (0);
 }
+static int 	check_invalid_elements_helper(char *check_str, char *set);
 
 int	check_invalid_elements(t_game *game)
 {
 	char	**map;
 	char	*check_str;
-	char	*game_element_set;
+	char	*set;
 	int		i;
 
 	map = game -> map;
-	game_element_set = ft_strdup("10PEC");
-	if (!game_element_set)
+	set = ft_strdup("10PEC");
+	if (!set)
 		return (-1);
 	i = -1;
 	while (map[++i] != NULL)
 	{
-		check_str = ft_strtrim(map[i], game_element_set);
-		if (!check_str)
-		{
-			free(game_element_set);
+		check_str = ft_strtrim(map[i], set);
+		if (check_invalid_elements_helper(check_str, set) == -1)
 			return (-1);
-		}
-		if (ft_strlen(check_str) > 0)
-		{
-			free(game_element_set);
-			free(check_str);
-			return (-1);
-		}
 		free(check_str);
 	}
-	free (game_element_set);
+	free (set);
+	return (0);
+}
+
+static int 	check_invalid_elements_helper(char *check_str, char *set)
+{
+	if (!check_str)
+	{
+		free(set);
+		return (-1);
+	}
+	if (ft_strlen(check_str) > 0)
+	{
+		free(set);
+		free(check_str);
+		return (-1);
+	}
 	return (0);
 }

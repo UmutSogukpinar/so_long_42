@@ -6,7 +6,7 @@
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/29 02:14:19 by umut              #+#    #+#             */
-/*   Updated: 2024/12/29 12:12:54 by umut             ###   ########.fr       */
+/*   Updated: 2024/12/29 13:33:20 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,11 @@ void	game_check_utils_two(t_game *game)
 	if (check_invalid_elements(game) != 0)
 	{
 		ft_printf("The map contains invalid chars. Game shuts down\n");
+		close_window(game);
+	}
+	if (accessability_check(game) != 0)
+	{
+		ft_printf("Accessability cannot be provided. Game shuts down\n");
 		close_window(game);
 	}
 }
