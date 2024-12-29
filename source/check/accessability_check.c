@@ -6,7 +6,7 @@
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/29 12:33:54 by umut              #+#    #+#             */
-/*   Updated: 2024/12/29 13:41:14 by umut             ###   ########.fr       */
+/*   Updated: 2024/12/29 14:04:53 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	flood_fill(t_game *game, char **map_copy, int x, int y)
 	rows = count_lines(game -> filename);
 	if (x < 0 || y < 0 || x >= cols || y >= rows)
 		return ;
-	if (map_copy[y][x] == '0' || map_copy[y][x] == 'E' 
+	if (map_copy[y][x] == '0' || map_copy[y][x] == 'E'
 		|| map_copy[y][x] == 'C' || map_copy[y][x] == 'P')
 		map_copy[y][x] = 'F';
 	else

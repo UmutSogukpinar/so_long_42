@@ -6,7 +6,7 @@
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 22:30:29 by umut              #+#    #+#             */
-/*   Updated: 2024/12/29 02:06:53 by umut             ###   ########.fr       */
+/*   Updated: 2024/12/29 14:22:40 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,17 @@ void	forward_movement(t_game *game)
 {
 	char	target;
 	char	current;
+	int		x;
+	int		y;
 
-	target = (game -> map)[(game -> player -> y) - 1][game -> player -> x];
-	current = (game -> map)[game -> player -> y][game -> player -> x];
+	x = game -> player -> x;
+	y = game -> player -> y;
+	target = (game -> map)[y - 1][x];
+	current = (game -> map)[y][x];
 	if (is_ground(target))
 	{
-		(game -> map)[(game -> player -> y) - 1][game -> player -> x] = current;
-		(game -> map)[game -> player -> y][game -> player -> x] = target;
+		(game -> map)[y - 1][x] = current;
+		(game -> map)[y][x] = target;
 		(game -> player -> y) -= 1;
 		(game -> moves) += 1;
 		ft_printf("number of movements: %d\n", (game -> moves));
@@ -44,13 +48,17 @@ void	backward_movement(t_game *game)
 {
 	char	target;
 	char	current;
+	int		x;
+	int		y;
 
-	target = (game -> map)[(game -> player -> y) + 1][game -> player -> x];
-	current = (game -> map)[game -> player -> y][game -> player -> x];
+	x = game -> player -> x;
+	y = game -> player -> y;
+	target = (game -> map)[y + 1][x];
+	current = (game -> map)[y][x];
 	if (is_ground(target))
 	{
-		(game -> map)[(game -> player -> y) + 1][game -> player -> x] = current;
-		(game -> map)[game -> player -> y][game -> player -> x] = target;
+		(game -> map)[y + 1][x] = current;
+		(game -> map)[y][x] = target;
 		(game -> player -> y) += 1;
 		(game -> moves) += 1;
 		ft_printf("number of movements: %d\n", (game -> moves));
@@ -68,13 +76,17 @@ void	right_movement(t_game *game)
 {
 	char	target;
 	char	current;
+	int		x;
+	int		y;
 
-	target = (game -> map)[(game -> player -> y)][(game -> player -> x) + 1];
-	current = (game -> map)[game -> player -> y][game -> player -> x];
+	x = game -> player -> x;
+	y = game -> player -> y;
+	target = (game -> map)[y][x + 1];
+	current = (game -> map)[y][x];
 	if (is_ground(target))
 	{
-		(game -> map)[(game -> player -> y)][(game -> player -> x) + 1] = current;
-		(game -> map)[game -> player -> y][game -> player -> x] = target;
+		(game -> map)[y][x + 1] = current;
+		(game -> map)[y][x] = target;
 		(game -> player -> x) += 1;
 		(game -> moves) += 1;
 		ft_printf("number of movements: %d\n", (game -> moves));
@@ -92,13 +104,17 @@ void	left_movement(t_game *game)
 {
 	char	target;
 	char	current;
+	int		x;
+	int		y;
 
-	target = (game -> map)[(game -> player -> y)][(game -> player -> x) - 1];
-	current = (game -> map)[game -> player -> y][game -> player -> x];
+	x = game -> player -> x;
+	y = game -> player -> y;
+	target = (game -> map)[y][x - 1];
+	current = (game -> map)[y][x];
 	if (is_ground(target))
 	{
-		(game -> map)[(game -> player -> y)][(game -> player -> x) - 1] = current;
-		(game -> map)[game -> player -> y][game -> player -> x] = target;
+		(game -> map)[y][x - 1] = current;
+		(game -> map)[y][x] = target;
 		(game -> player -> x) -= 1;
 		(game -> moves) += 1;
 		ft_printf("number of movements: %d\n", (game -> moves));

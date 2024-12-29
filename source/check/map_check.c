@@ -6,7 +6,7 @@
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/29 02:31:01 by umut              #+#    #+#             */
-/*   Updated: 2024/12/29 12:28:55 by umut             ###   ########.fr       */
+/*   Updated: 2024/12/29 14:06:15 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	check_map_sides(t_game *game)
 			return (-1);
 	return (0);
 }
-static int 	check_invalid_elements_helper(char *check_str, char *set);
+static int	check_invalid_elements_helper(char *check_str, char *set);
 
 int	check_invalid_elements(t_game *game)
 {
@@ -77,7 +77,7 @@ int	check_invalid_elements(t_game *game)
 	return (0);
 }
 
-static int 	check_invalid_elements_helper(char *check_str, char *set)
+static int	check_invalid_elements_helper(char *check_str, char *set)
 {
 	if (!check_str)
 	{

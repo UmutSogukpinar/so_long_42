@@ -6,7 +6,7 @@
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/29 02:14:19 by umut              #+#    #+#             */
-/*   Updated: 2024/12/29 13:33:20 by umut             ###   ########.fr       */
+/*   Updated: 2024/12/29 14:05:15 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,22 +24,22 @@ void	game_check(t_game *game)
 
 void	null_check(t_game *game)
 {
-	if(!(game -> map) || !(game -> filename) || !(game -> name))
+	if (!(game -> map) || !(game -> filename) || !(game -> name))
 	{
 		ft_printf("Null Check Function works. Game shuts down\n");
 		close_window(game);
 	}
-	if(!(game -> ground_img) || !(game -> wall_img) || !(game -> collect_img))
+	if (!(game -> ground_img) || !(game -> wall_img) || !(game -> collect_img))
 	{
 		ft_printf("Null Check Function works. Game shuts down\n");
 		close_window(game);
 	}
-	if(!(game -> exit_img) || !(game -> mlx) || !(game -> screen))
+	if (!(game -> exit_img) || !(game -> mlx) || !(game -> screen))
 	{
 		ft_printf("Null Check Function works. Game shuts down\n");
 		close_window(game);
 	}
-	if(!(game -> player))
+	if (!(game -> player))
 	{
 		ft_printf("Null Check Function works. Game shuts down\n");
 		close_window(game);
