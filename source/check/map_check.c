@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check.h                                            :+:      :+:    :+:   */
+/*   map_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/29 01:57:39 by umut              #+#    #+#             */
-/*   Updated: 2024/12/29 02:48:06 by umut             ###   ########.fr       */
+/*   Created: 2024/12/29 02:31:01 by umut              #+#    #+#             */
+/*   Updated: 2024/12/29 03:15:01 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHECK_H
-# define CHECK_H
+#include "map.h"
+#include "libft.h"
+#include "ft_printf.h"
 
-#include "so_long.h"
+int	is_map_rectangular(t_game *game)
+{
+	int	i;
+	int	row;
 
-void	game_check(t_game *game);
-
-void	null_check(t_game *game);
-void	game_check_utils_one(t_game *game);
-
-int		is_map_rectangular(t_game *game);
-
-int		all_collectibles_gathered(t_game *game);
-
-#endif
+	row = (game -> screen_x) / CELL_LEN;
+	i = 0;
+	while (i < ((game -> screen_y) / CELL_LEN))
+	{
+		if ((ft_strlen((game -> map)[i]) - 1) != (size_t) row)
+			return (0);
+		i++;
+	}
+	return (1);
+}

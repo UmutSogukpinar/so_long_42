@@ -23,6 +23,7 @@ SRCS =	$(SOURCE_DIR)/main.c \
 		$(MOVE_DIR)/check.c \
 		$(CHECK_DIR)/check_collect.c \
 		$(CHECK_DIR)/game_check.c \
+		$(CHECK_DIR)/map_check.c \
 
 OBJS = ${SRCS:.c=.o}
 
