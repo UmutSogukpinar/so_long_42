@@ -6,7 +6,7 @@
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 23:49:31 by umut              #+#    #+#             */
-/*   Updated: 2024/12/29 01:47:28 by umut             ###   ########.fr       */
+/*   Updated: 2024/12/29 14:26:32 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ void	draw_fox(t_game *game)
 	int		i;
 	int		j;
 
-	if (!(game) || !(game -> map) || 
-		!(game -> mlx) || !(game -> player -> img))
+	if (!(game) || !(game -> map)
+		|| !(game -> mlx) || !(game -> player -> img))
 	{
 		perror("Error: Invalid game structure or parameters");
 		close_window(game);

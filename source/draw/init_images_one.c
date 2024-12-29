@@ -6,7 +6,7 @@
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 00:26:26 by umut              #+#    #+#             */
-/*   Updated: 2024/12/29 01:47:08 by umut             ###   ########.fr       */
+/*   Updated: 2024/12/29 14:25:50 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	init_images(t_game *game)
 	init_ground(game);
 	init_fox(game);
 	init_wall(game);
-    init_collectible(game);
+	init_collectible(game);
 	init_exit(game);
 }
 
@@ -38,8 +38,8 @@ void	init_ground(t_game *game)
 		free(xpm_path);
 		close_window(game);
 	}
-	game -> ground_img = mlx_xpm_file_to_image(game->mlx, xpm_path, 
-        &width, &height);
+	game -> ground_img = mlx_xpm_file_to_image
+		(game->mlx, xpm_path, &width, &height);
 	if (!(game->ground_img))
 	{
 		perror("Error: Failed to load XPM image");
@@ -62,7 +62,8 @@ void	init_fox(t_game *game)
 		free(xpm_path);
 		close_window(game);
 	}
-	game -> player -> img = mlx_xpm_file_to_image(game->mlx, xpm_path, &width, &height);
+	game -> player -> img = mlx_xpm_file_to_image
+		(game->mlx, xpm_path, &width, &height);
 	if (!(game-> player -> img))
 	{
 		perror("Error: Failed to load XPM image");
@@ -85,7 +86,8 @@ void	init_wall(t_game *game)
 		free(xpm_path);
 		close_window(game);
 	}
-	game -> wall_img = mlx_xpm_file_to_image(game->mlx, xpm_path, &width, &height);
+	game -> wall_img = mlx_xpm_file_to_image
+		(game->mlx, xpm_path, &width, &height);
 	if (!(game -> wall_img))
 	{
 		perror("Error: Failed to load XPM image");
