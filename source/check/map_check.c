@@ -6,7 +6,7 @@
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/29 02:31:01 by umut              #+#    #+#             */
-/*   Updated: 2024/12/29 03:15:01 by umut             ###   ########.fr       */
+/*   Updated: 2024/12/29 11:15:57 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,31 @@ int	is_map_rectangular(t_game *game)
 	while (i < ((game -> screen_y) / CELL_LEN))
 	{
 		if ((ft_strlen((game -> map)[i]) - 1) != (size_t) row)
-			return (0);
+			return (-1);
 		i++;
 	}
-	return (1);
+	return (0);
+}
+
+int	check_map_sides(t_game *game)
+{
+	int	i;
+	int	row;
+	int	column;
+
+	row = (game -> screen_x) / CELL_LEN;
+	column = (game -> screen_y) / CELL_LEN;
+	i = -1;
+	while (++i < row)
+		if ((game -> map)[0][i] != '1')
+			return (-1);
+	i = -1;
+	while (++i < row)
+		if ((game -> map)[column - 1][i] != '1')
+			return (-1);
+	i = -1;
+	while (++i < column)
+		if ((game -> map)[i][0] != '1' || (game -> map)[i][row - 1] != '1')
+			return (-1);
+	return (0);
 }

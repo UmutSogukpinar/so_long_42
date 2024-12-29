@@ -6,7 +6,7 @@
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/29 02:14:19 by umut              #+#    #+#             */
-/*   Updated: 2024/12/29 03:06:22 by umut             ###   ########.fr       */
+/*   Updated: 2024/12/29 11:22:24 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,17 @@ void	game_check_utils_one(t_game *game)
 	}
 	if (get_total_collectible(game) <= 0)
 	{
-		ft_printf("Collectibles supposed to be bigger than zero");
+		ft_printf("Collectibles supposed to be bigger than zero.");
 		close_window(game);
 	}
-	if ((is_map_rectangular(game)) == 0)
+	if ((is_map_rectangular(game)) != 0)
 	{
-		ft_printf("The map is not rectangular");
+		ft_printf("The map is not rectangular.");
+		close_window(game);
+	}
+	if (check_map_sides(game) != 0)
+	{
+		ft_printf("The map is not covered by walls.");
 		close_window(game);
 	}
 }
