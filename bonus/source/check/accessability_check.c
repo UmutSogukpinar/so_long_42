@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   accessability_check.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: usogukpi <usogukpi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 13:56:02 by usogukpi          #+#    #+#             */
-/*   Updated: 2024/12/30 18:42:00 by usogukpi         ###   ########.fr       */
+/*   Updated: 2024/12/31 00:26:14 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,14 @@ void	flood_fill(t_game *game, char **map_copy, int x, int y)
 	rows = count_lines(game -> filename);
 	if (x < 0 || y < 0 || x >= cols || y >= rows)
 		return ;
-	if (map_copy[y][x] == '0' || map_copy[y][x] == 'E'
-		|| map_copy[y][x] == 'C' || map_copy[y][x] == 'P')
+	if (map_copy[y][x] == '0' || map_copy[y][x] == 'C'
+		|| map_copy[y][x] == 'P')
 		map_copy[y][x] = 'F';
+	else if (map_copy[y][x] == 'E')
+	{
+		map_copy[y][x] = 'F';
+		return ;
+	}
 	else
 		return ;
 	flood_fill(game, map_copy, x + 1, y);
@@ -65,6 +70,13 @@ char	**copy_map(t_game *game, int rows)
 	while (i < rows)
 	{
 		new[i] = ft_strdup((game -> map)[i]);
+		if (!(new[i]))
+		{
+			while (--i <= 0)
+				free(new[i]);
+			free(new);
+			return (NULL);
+		}
 		i++;
 	}
 	new[i] = NULL;
