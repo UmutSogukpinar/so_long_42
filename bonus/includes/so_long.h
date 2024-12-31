@@ -6,7 +6,7 @@
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 13:54:40 by usogukpi          #+#    #+#             */
-/*   Updated: 2024/12/31 00:18:46 by umut             ###   ########.fr       */
+/*   Updated: 2025/01/01 00:24:37 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ typedef struct s_player
 	void	*img;
 
 }	t_player;
-
 
 typedef struct s_game
 {
@@ -43,7 +42,7 @@ typedef struct s_game
 	int			moves;
 	int			total_collectible;
 	int			gathered_collectible;
-	
+
 	t_player	*player;
 
 }	t_game;

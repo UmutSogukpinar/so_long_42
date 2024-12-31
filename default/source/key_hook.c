@@ -6,7 +6,7 @@
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 13:59:16 by usogukpi          #+#    #+#             */
-/*   Updated: 2024/12/31 23:22:50 by umut             ###   ########.fr       */
+/*   Updated: 2024/12/31 23:45:39 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	key_hook(int keycode, t_game *game)
 {
 	if (keycode == 65307)
 	{
-		ft_printf("User enter \"ESC\" button. Game shuts down");
+		ft_printf("User enter \"ESC\" button. Game shuts down\n");
 		close_window(game);
 	}
 	else if (keycode == 119)

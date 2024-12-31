@@ -6,7 +6,7 @@
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 13:54:34 by usogukpi          #+#    #+#             */
-/*   Updated: 2024/12/31 23:18:40 by umut             ###   ########.fr       */
+/*   Updated: 2025/01/01 00:17:28 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # include "so_long.h"
 
 void	movement(t_game *game, int t_x, int t_y);
-void	movement_two(t_game *game, char t_cell, char c_cell, int t_x, int t_y);
-void	move_three(t_game *game, char t_cell, char c_cell, int t_x, int t_y);
+void	movement_utils(t_game *game, int t_x, int t_y);
+void	enemy_collision(t_game *game);
 
 int		is_wall(char c);
 int		is_ground(char c);
