@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movement.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: usogukpi <usogukpi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 13:58:54 by usogukpi          #+#    #+#             */
-/*   Updated: 2024/12/30 18:43:11 by usogukpi         ###   ########.fr       */
+/*   Updated: 2024/12/31 23:21:30 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,114 +16,76 @@
 #include "movement.h"
 #include "check.h"
 
-void	forward_movement(t_game *game)
+void	game_winning_message(t_game *game);
+
+void	movement(t_game *game, int t_x, int t_y)
 {
-	char	target;
-	char	current;
+	char	target_cell;
+	char	current_cell;
 	int		x;
 	int		y;
 
 	x = game -> player -> x;
 	y = game -> player -> y;
-	target = (game -> map)[y - 1][x];
-	current = (game -> map)[y][x];
-	if (is_ground(target))
+	target_cell = (game -> map)[y + t_y][x + t_x];
+	current_cell = (game -> map)[y][x];
+	if (is_ground(target_cell))
 	{
-		(game -> map)[y - 1][x] = current;
-		(game -> map)[y][x] = target;
-		(game -> player -> y) -= 1;
+		(game -> map)[y + t_y][x + t_x] = current_cell;
+		(game -> map)[y][x] = target_cell;
+		(game -> player -> y) += t_y;
+		(game -> player -> x) += t_x;
 		(game -> moves) += 1;
-		ft_printf("number of movements: %d\n", (game -> moves));
+		ft_printf("Number of movements: %d\n", (game -> moves));
 		draw_images(game);
 	}
-	else if (is_wall(target))
+	else if (is_wall(target_cell))
 		return ;
-	else if (is_collectible(target))
-		forward_movement_two(game, target, current);
-	else if (is_exit(target) && all_collectibles_gathered(game))
-		right_movement_two(game, target, current);
+	movement_two(game, target_cell, current_cell, t_x, t_y);
 }
 
-void	backward_movement(t_game *game)
+void	movement_two(t_game *game, char t_cell, char c_cell, int t_x, int t_y)
 {
-	char	target;
-	char	current;
-	int		x;
-	int		y;
+	int	y;
+	int	x;
 
-	x = game -> player -> x;
 	y = game -> player -> y;
-	target = (game -> map)[y + 1][x];
-	current = (game -> map)[y][x];
-	if (is_ground(target))
+	x = game -> player -> x;
+	if (is_collectible(t_cell))
 	{
-		(game -> map)[y + 1][x] = current;
-		(game -> map)[y][x] = target;
-		(game -> player -> y) += 1;
+		(game -> map)[y + t_y][x + t_x] = c_cell;
+		(game -> map)[y][x] = '0';
+		(game -> player -> y) += t_y;
+		(game -> player -> x) += t_x;
+		(game -> gathered_collectible) += 1;
 		(game -> moves) += 1;
-		ft_printf("number of movements: %d\n", (game -> moves));
+		ft_printf("Number of movements: %d\n", (game -> moves));
 		draw_images(game);
 	}
-	else if (is_wall(target))
-		return ;
-	else if (is_collectible(target))
-		backward_movement_two(game, target, current);
-	else if (is_exit(target) && all_collectibles_gathered(game))
-		right_movement_two(game, target, current);
+	else if (is_exit(t_cell) && all_collectibles_gathered(game))
+	{
+		(game -> moves) += 1;
+		ft_printf("Number of movements: %d\n", (game -> moves));
+		game_winning_message(game);
+		close_window(game);
+	}
 }
 
-void	right_movement(t_game *game)
+void	game_winning_message(t_game *game)
 {
-	char	target;
-	char	current;
-	int		x;
-	int		y;
-
-	x = game -> player -> x;
-	y = game -> player -> y;
-	target = (game -> map)[y][x + 1];
-	current = (game -> map)[y][x];
-	if (is_ground(target))
-	{
-		(game -> map)[y][x + 1] = current;
-		(game -> map)[y][x] = target;
-		(game -> player -> x) += 1;
-		(game -> moves) += 1;
-		ft_printf("number of movements: %d\n", (game -> moves));
-		draw_images(game);
-	}
-	else if (is_wall(target))
-		return ;
-	else if (is_collectible(target))
-		right_movement_two(game, target, current);
-	else if (is_exit(target) && all_collectibles_gathered(game))
-		right_movement_two(game, target, current);
-}
-
-void	left_movement(t_game *game)
-{
-	char	target;
-	char	current;
-	int		x;
-	int		y;
-
-	x = game -> player -> x;
-	y = game -> player -> y;
-	target = (game -> map)[y][x - 1];
-	current = (game -> map)[y][x];
-	if (is_ground(target))
-	{
-		(game -> map)[y][x - 1] = current;
-		(game -> map)[y][x] = target;
-		(game -> player -> x) -= 1;
-		(game -> moves) += 1;
-		ft_printf("number of movements: %d\n", (game -> moves));
-		draw_images(game);
-	}
-	else if (is_wall(target))
-		return ;
-	else if (is_collectible(target))
-		left_movement_two(game, target, current);
-	else if (is_exit(target) && all_collectibles_gathered(game))
-		right_movement_two(game, target, current);
+	ft_printf("⣿⣿⣿⣿⣿⣿⣿⣿⠿⠟⠛⠛⠛⠛⠛⠿⢿⣿⣿⣿⣿⣿⣿⣿\n"
+		"⣿⣿⣿⣿⡿⠟⣉⣴⣾⣿⣿⣿⣿⣿⣿⣶⣦⣉⠛⢿⣿⣿⣿⣿\n"
+		"⣿⣿⣿⠟⣡⠚⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠓⣄⠻⣿⣿⣿\n"
+		"⣿⣿⠃⣴⡿⠲⠤⠈⠙⢿⣿⣿⣿⣿⡿⠋⠁⠤⠖⢿⣦⠘⣿⣿\n"
+		"⣿⡏⣸⣿⡷⠶⠒⠀⣀⣠⣿⣿⣿⣿⣄⡀⠀ ⠒⠶⢾⣿⡇⢹\n"
+		"⣿⠁⣿⣿⣦⣤⣶⣿⡏⠹⠿⠋⠙⠿⠟⢉⣿⣶⣤⣴⣿⣿⠈⣿\n"
+		"⣿⠀⣿⣿⣿⣿⣿⡿⠿⠦⣤⣴⣶⣤⠴⠿⢿⣿⣿⣿⣿⣿⠀⣿\n"
+		"⣿⡆⢻⠿⢿⠛⣠⣶⣶⣶⣦⡈⢁⣤⣶⣶⣦⣄⠙⡿⠿⠏⢰⣿\n"
+		"⣿⡇⢠⣴⣦⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⣴⣦⡄⢸⣿\n"
+		"⣿⡇⢻⣿⣿⡄⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⢠⣿⣿⡏⢸⣿\n"
+		"⣿⣧⡈⠻⠟⠃⠘⢿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠃⠘⠛⠛⢁⣼⣿\n"
+		"⣿⣿⣿⣶⣶⣾⣶⣄⡙⠻⣿⣿⣿⣿⠟⠋⣠⣶⣷⣶⣶⣿⣿⣿\n"
+		"⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⣄⡉⢁⣠⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿\n");
+	ft_printf("Congratz Champ!!! YOU WON.\n");
+	ft_printf("Number of movements: %d\n", (game -> moves));
 }

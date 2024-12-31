@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movement.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: usogukpi <usogukpi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 13:54:34 by usogukpi          #+#    #+#             */
-/*   Updated: 2024/12/30 14:06:36 by usogukpi         ###   ########.fr       */
+/*   Updated: 2024/12/31 23:22:11 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,8 @@
 
 # include "so_long.h"
 
-void	forward_movement(t_game *game);
-void	forward_movement_two(t_game *game, char target, char current);
-void	backward_movement(t_game *game);
-void	backward_movement_two(t_game *game, char target, char current);
-void	right_movement(t_game *game);
-void	right_movement_two(t_game *game, char target, char current);
-void	left_movement(t_game *game);
-void	left_movement_two(t_game *game, char target, char current);
+void	movement(t_game *game, int t_x, int t_y);
+void	movement_two(t_game *game, char t_cell, char c_cell, int t_x, int t_y);
 
 int		is_wall(char c);
 int		is_ground(char c);

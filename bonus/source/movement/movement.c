@@ -6,7 +6,7 @@
 /*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 13:58:54 by usogukpi          #+#    #+#             */
-/*   Updated: 2024/12/31 01:40:30 by umut             ###   ########.fr       */
+/*   Updated: 2024/12/31 23:19:18 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 #include "movement.h"
 #include "check.h"
 
-void	game_winning_message(void);
-void	game_lose_message(void);
+void	game_winning_message(t_game *game);
+void	game_lose_message(t_game *game);
 
 void	movement(t_game *game, int t_x, int t_y)
 {
@@ -37,7 +37,6 @@ void	movement(t_game *game, int t_x, int t_y)
 		(game -> player -> y) += t_y;
 		(game -> player -> x) += t_x;
 		(game -> moves) += 1;
-		ft_printf("number of movements: %d\n", (game -> moves));
 		draw_images(game);
 	}
 	else if (is_wall(target_cell))
@@ -61,14 +60,12 @@ void	movement_two(t_game *game, char t_cell, char c_cell, int t_x, int t_y)
 		(game -> player -> x) += t_x;
 		(game -> gathered_collectible) += 1;
 		(game -> moves) += 1;
-		ft_printf("number of movements: %d\n", (game -> moves));
 		draw_images(game);
 	}
 	else if (is_exit(t_cell) && all_collectibles_gathered(game))
 	{
 		(game -> moves) += 1;
-		ft_printf("number of movements: %d\n", (game -> moves));
-		game_winning_message();
+		game_winning_message(game);
 		close_window(game);
 	}
 }
@@ -87,14 +84,13 @@ void	move_three(t_game *game, char t_cell, char c_cell, int t_x, int t_y)
 		(game -> player -> y) += t_y;
 		(game -> player -> x) += t_x;
 		(game -> moves) += 1;
-		ft_printf("number of movements: %d\n", (game -> moves));
-		game_lose_message();
+		game_lose_message(game);
 		close_window(game);
 	}
 }
 
 
-void	game_winning_message(void)
+void	game_winning_message(t_game *game)
 {
 	ft_printf("⣿⣿⣿⣿⣿⣿⣿⣿⠿⠟⠛⠛⠛⠛⠛⠿⢿⣿⣿⣿⣿⣿⣿⣿\n"
 		"⣿⣿⣿⣿⡿⠟⣉⣴⣾⣿⣿⣿⣿⣿⣿⣶⣦⣉⠛⢿⣿⣿⣿⣿\n"
@@ -110,8 +106,9 @@ void	game_winning_message(void)
 		"⣿⣿⣿⣶⣶⣾⣶⣄⡙⠻⣿⣿⣿⣿⠟⠋⣠⣶⣷⣶⣶⣿⣿⣿\n"
 		"⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⣄⡉⢁⣠⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿\n");
 	ft_printf("Congratz Champ!!! YOU WON.\n");
+	ft_printf("Number of movements: %d\n", (game -> moves));
 }
-void	game_lose_message(void)
+void	game_lose_message(t_game *game)
 {
 	ft_printf("⠟⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⠛⢻⣿\n"
 			"⡆⠊⠈⣿⢿⡟⠛⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣎⠈⠻\n"
@@ -125,5 +122,6 @@ void	game_lose_message(void)
 			"⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⣠⣂⠀⠀⠀⠀⠀⠀⠀⢀⣁⢠⣿⣿⣿⣿⣿⣿⣿⣿\n"
 			"⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣶⣄⣤⣤⣔⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n");
 	ft_printf("Game Over! Better luck next time.\n");
+	ft_printf("Number of movements: %d\n", (game -> moves));
 }
 

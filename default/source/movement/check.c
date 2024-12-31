@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: usogukpi <usogukpi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 13:58:41 by usogukpi          #+#    #+#             */
-/*   Updated: 2024/12/30 13:58:43 by usogukpi         ###   ########.fr       */
+/*   Updated: 2024/12/31 01:33:13 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,14 @@ int	is_collectible(char c)
 int	is_exit(char c)
 {
 	if (c == 'E')
+		return (1);
+	else
+		return (0);
+}
+
+int	is_enemy(char c)
+{
+	if (c == 'X')
 		return (1);
 	else
 		return (0);
