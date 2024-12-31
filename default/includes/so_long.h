@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: usogukpi <usogukpi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 13:54:40 by usogukpi          #+#    #+#             */
-/*   Updated: 2024/12/30 14:05:57 by usogukpi         ###   ########.fr       */
+/*   Updated: 2025/01/01 00:04:27 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_game
 	int			moves;
 	int			total_collectible;
 	int			gathered_collectible;
+
 	t_player	*player;
 
 }	t_game;

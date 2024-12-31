@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: usogukpi <usogukpi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: umut <umut@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 13:58:25 by usogukpi          #+#    #+#             */
-/*   Updated: 2024/12/30 18:41:41 by usogukpi         ###   ########.fr       */
+/*   Updated: 2024/12/31 00:32:40 by umut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ int	count_lines(char *file_name)
 		return (-1);
 	}
 	line = get_next_line(fd);
+	if (!line)
+		return (-1);
 	counter = 0;
 	while (line != NULL)
 	{
@@ -93,6 +95,8 @@ int	count_columns(char *file_name)
 		return (-1);
 	}
 	line = get_next_line(fd);
+	if (!line)
+		return (-1);
 	column_count = 0;
 	if (line)
 	{
