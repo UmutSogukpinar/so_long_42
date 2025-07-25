@@ -16,7 +16,7 @@ t_game	*init_game(char	*map_path)
 	game->name = GAME_NAME;
 	player_ctor(&game->player);
 	if (!init_map(game) || !is_map_valid(game) ||
-		!init_data(game) || !is_map_accessable(game) ||
+		!init_data(game, game->map.matrix) || !is_map_accessable(game) ||
 		!init_mlx(game) || !init_textures(game))
 	{
 		free_game(game);

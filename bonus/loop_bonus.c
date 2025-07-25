@@ -1,4 +1,5 @@
-#include "../../includes/game.h"
+#include "../includes/game.h"
+#include "../includes/game_bonus.h"
 
 static int handle_keypress(int keycode, t_game *game);
 static int render_frame(t_game *game);
@@ -57,6 +58,8 @@ int handle_keypress(int keycode, t_game *game)
 
 static int render_frame(t_game *game)
 {
+	update_enemies(game);
 	draw_map(game);
 	return (0);
 }
+

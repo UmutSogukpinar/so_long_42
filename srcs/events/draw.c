@@ -31,7 +31,7 @@ static void *get_tile_img(t_game *game, char tile)
 		return (game->textures.collectible.img);
 	if (tile == EXIT)
 		return (game->textures.exit.img);
-	return (game->textures.floor.img); // fallback
+	return (game->textures.floor.img);
 }
 
 static void draw_tile(t_game *game, size_t i, size_t j)

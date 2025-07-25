@@ -60,6 +60,11 @@ static void flood_fill(t_game *game, char **matrix, int x, int y)
         return;
     if (matrix[y][x] == WALL || matrix[y][x] == VISITED)
         return;
+    if (matrix[y][x] == EXIT)
+    {
+        matrix[y][x] = VISITED;
+        return ;
+    }
     matrix[y][x] = VISITED;
     flood_fill(game, matrix, x + 1, y);
     flood_fill(game, matrix, x - 1, y);

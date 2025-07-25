@@ -50,6 +50,28 @@
 # define PLAYER_L_PATH		"assets/player/left.xpm"
 # define PLAYER_R_PATH		"assets/player/right.xpm"
 
+// Enemy animations
+# define ENEMY_D_0_PATH	    "assets/enemy/down/0.xpm"
+# define ENEMY_D_1_PATH	    "assets/enemy/down/1.xpm"
+# define ENEMY_D_2_PATH	    "assets/enemy/down/2.xpm"
+# define ENEMY_D_3_PATH	    "assets/enemy/down/3.xpm"
+
+# define ENEMY_L_0_PATH	    "assets/enemy/left/0.xpm"
+# define ENEMY_L_1_PATH	    "assets/enemy/left/1.xpm"
+# define ENEMY_L_2_PATH	    "assets/enemy/left/2.xpm"
+# define ENEMY_L_3_PATH	    "assets/enemy/left/3.xpm"
+
+# define ENEMY_R_0_PATH	    "assets/enemy/right/0.xpm"
+# define ENEMY_R_1_PATH	    "assets/enemy/right/1.xpm"
+# define ENEMY_R_2_PATH	    "assets/enemy/right/2.xpm"
+# define ENEMY_R_3_PATH	    "assets/enemy/right/3.xpm"
+
+# define ENEMY_U_0_PATH	    "assets/enemy/up/0.xpm"
+# define ENEMY_U_1_PATH	    "assets/enemy/up/1.xpm"
+# define ENEMY_U_2_PATH	    "assets/enemy/up/2.xpm"
+# define ENEMY_U_3_PATH	    "assets/enemy/up/3.xpm"
+
+
 // =========================== Directions ===========================
 
 # define UP             0
@@ -66,6 +88,13 @@
 # define KEY_A     97
 # define KEY_S     115
 # define KEY_D     100
+
+
+// =========================== Enemy Constants ===========================
+
+# define ENEMY  'X'
+# define ENEMY_ANIM_FRAME 4
+# define FRAME_DELAY    8   
 
 // =========================== Structures ===========================
 
@@ -86,6 +115,11 @@ typedef struct s_texture
     int   endian;
 }   t_texture;
 
+typedef struct s_enemy_textures
+{
+	t_texture textures[NUMBER_OF_DIR][ENEMY_ANIM_FRAME];
+}	            t_enemy_textures;
+
 typedef struct	s_env_textures
 {
     t_texture wall;
@@ -93,6 +127,14 @@ typedef struct	s_env_textures
     t_texture collectible;
     t_texture exit;
 }   			t_env_textures;
+
+typedef struct s_enemy
+{
+	t_axis	pos;
+	int		dir;
+	int		frame;
+    int		frame_tick;
+}	t_enemy;
 
 typedef struct s_player
 {
@@ -112,6 +154,7 @@ typedef	struct	s_map
 
 typedef struct	s_data
 {
+    size_t  enemy_count;
 	size_t	move_count;
 	size_t	exit_count;
 	size_t	total_collectible;
@@ -132,12 +175,14 @@ typedef struct s_mlx
 
 typedef struct s_game
 {
-	char			*name;
-	t_map			map;
-	t_data			data;
-	t_mlx			*mlx;
-	t_env_textures	textures;
-	t_player		player;
+	char			    *name;
+	t_map			    map;
+	t_data			    data;
+	t_mlx			    *mlx;
+	t_env_textures	    textures;
+	t_player		    player;
+    t_enemy			    *enemies;
+    t_enemy_textures    enemy_texture;
 }	t_game;
 
 #endif

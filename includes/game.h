@@ -19,7 +19,7 @@
 
 t_game	*init_game(char	*map_path);
 bool	init_map(t_game *game);
-bool	init_data(t_game *game);
+bool	init_data(t_game *game, char **matrix);
 bool    init_mlx(t_game *game);
 bool    init_textures(t_game *game);
 

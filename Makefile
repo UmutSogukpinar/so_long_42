@@ -21,7 +21,7 @@ UTILS_DIR = $(SRC_DIR)/utils
 GNL_DIR = $(SRC_DIR)/gnl
 
 # Bonus subdirectories
-
+ENEMY_DIR = $(BONUS_DIR)/enemy
 
 # Libraries
 LIBS = $(LIBFT_DIR)/libft.a $(MLX_DIR)/libmlx.a -lXext -lX11 -lm
@@ -47,13 +47,32 @@ SRCS =										\
 		$(UTILS_DIR)/str_utils.c			\
 		$(UTILS_DIR)/debug.c				\
 		$(GNL_DIR)/get_next_line.c			\
-		$(GNL_DIR)/get_next_line_utils.c	\
+		$(GNL_DIR)/get_next_line_utils.c
 
 
 
 
 # Bonus Source Files
-BONUS_SRCS = 							\
+BONUS_SRCS = 										\
+				$(BONUS_DIR)/main_bonus.c			\
+				$(INIT_DIR)/init_game.c				\
+				$(INIT_DIR)/init_map.c				\
+				$(INIT_DIR)/init_mlx.c				\
+				$(BONUS_DIR)/init_data_bonus.c		\
+				$(BONUS_DIR)/init_texture_bonus.c	\
+				$(BONUS_DIR)/loop_bonus.c			\
+				$(BONUS_DIR)/draw_bonus.c			\
+				$(ENEMY_DIR)/move_enemy_bonus.c		\
+				$(ENEMY_DIR)/enemy_bonus.c			\
+				$(EVENT_DIR)/move.c					\
+				$(FREE_DIR)/free.c					\
+				$(CHECKER_DIR)/map_checker.c		\
+				$(CHECKER_DIR)/file_checker.c		\
+				$(UTILS_DIR)/str_utils.c			\
+				$(UTILS_DIR)/display.c				\
+				$(UTILS_DIR)/debug.c				\
+				$(GNL_DIR)/get_next_line.c			\
+				$(GNL_DIR)/get_next_line_utils.c
 
 # Default target
 all: $(NAME)
@@ -67,10 +86,10 @@ $(NAME): $(SRCS)
 	@$(CC) $(CFLAGS) $(SRCS) $(LIBS) -o $(NAME)
 	@echo "✅ Build complete!"
 
-$(BONUS_NAME): $(BONUS_OBJS)
+$(BONUS_NAME): $(BONUS_SRCS)
 	@$(MAKE) -C $(LIBFT_DIR) --silent
 	@$(MAKE) -C $(MLX_DIR) --silent || true
-	@$(CC) $(CFLAGS) $(BONUS_OBJS) $(LIBS) -o $(NAME)
+	@$(CC) $(CFLAGS) $(BONUS_SRCS) $(LIBS) -o $(NAME)
 	@echo "✅ Bonus build complete!"
 
 # Clean object files
