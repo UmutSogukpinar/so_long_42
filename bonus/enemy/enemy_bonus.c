@@ -25,3 +25,17 @@ static void	update_enemy_frame(t_enemy *enemy)
 		enemy->frame_tick = 0;
 	}
 }
+
+bool is_enemy_collision(t_game *game, int x, int y)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < game->data.enemy_count)
+	{
+		if (game->enemies[i].pos.x == x && game->enemies[i].pos.y == y)
+			return (true);
+		i++;
+	}
+	return (false);
+}

@@ -56,10 +56,15 @@ int handle_keypress(int keycode, t_game *game)
 	return (0);
 }
 
-static int render_frame(t_game *game)
+static int	render_frame(t_game *game)
 {
-	update_enemies(game);
+	if (get_elapsed_ms(game) >= 300)
+	{
+		update_enemies(game);
+		game->data.last_update = get_current_time_ms();
+	}
 	draw_map(game);
 	return (0);
 }
+
 

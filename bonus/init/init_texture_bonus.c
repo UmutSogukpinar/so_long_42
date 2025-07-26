@@ -1,4 +1,6 @@
-#include "../includes/game.h"
+#include "../../includes/game.h"
+#include "../../includes/game_bonus.h"
+
 
 static bool	load_texture(void *mlx_ptr, t_texture *tex, char *path);
 static bool	init_player_textures(t_game *game);
@@ -12,6 +14,8 @@ bool	init_textures(t_game *game)
 	if (!init_player_textures(game))
 		return (false);
 	if (!init_enemy_textures(game))
+		return (false);
+	if (!init_counter_textures(game))
 		return (false);
 	return (true);
 }

@@ -6,24 +6,27 @@
 # define GAME_NAME 				"so_long"
 
 # define SIZE   64
+# define SIZE_MAX 10000
+# define DIGIT_SPACING 50
+# define DIGIT_POS_Y	0
 
-// =========================== Assets files Extensions ===========================
+// ========================= Assets files Extensions =========================
 
 # define MAP_FILE_EXTENSION 	".ber"
 # define ASSET_FILE_EXTENSION 	".xpm"
 
-// =========================== String Constants ===========================
+// ========================= String Constants =========================
 
 # define SPACE_SET				" \t\n\v\f\r"
 # define SLASH 					'/'
 
-// =========================== GNL Constants ===========================
+// ========================= GNL Constants =========================
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE			1024
 # endif
 
-// =========================== Map Element Constants ===========================
+// ======================= Map Element Constants =======================
 
 # define COLL					'C'
 # define EXIT					'E'
@@ -36,7 +39,7 @@
 
 # define MAP_SET                "10CEP"
 
-// =========================== Asset Paths =========================
+// ========================= Asset Paths =======================
 
 // Environment
 # define WALL_PATH			"assets/enviroment/wall.xpm"
@@ -71,8 +74,21 @@
 # define ENEMY_U_2_PATH	    "assets/enemy/up/2.xpm"
 # define ENEMY_U_3_PATH	    "assets/enemy/up/3.xpm"
 
+// ========================= Counter digits =========================
 
-// =========================== Directions ===========================
+# define COUNTER_0_PATH		"assets/counters/zero.xpm"
+# define COUNTER_1_PATH		"assets/counters/one.xpm"
+# define COUNTER_2_PATH		"assets/counters/two.xpm"
+# define COUNTER_3_PATH		"assets/counters/three.xpm"
+# define COUNTER_4_PATH		"assets/counters/four.xpm"
+# define COUNTER_5_PATH		"assets/counters/five.xpm"
+# define COUNTER_6_PATH		"assets/counters/six.xpm"
+# define COUNTER_7_PATH		"assets/counters/seven.xpm"
+# define COUNTER_8_PATH		"assets/counters/eight.xpm"
+# define COUNTER_9_PATH		"assets/counters/nine.xpm"
+
+
+// ======================== Directions ========================
 
 # define UP             0
 # define DOWN           1
@@ -81,7 +97,7 @@
 
 # define NUMBER_OF_DIR  4
 
-// =========================== Key Constants ===========================
+// ======================== Key Constants ========================
 
 # define KEY_ESC   65307
 # define KEY_W     119
@@ -90,13 +106,18 @@
 # define KEY_D     100
 
 
-// =========================== Enemy Constants ===========================
+// ========================= Enemy Constants ========================
 
 # define ENEMY  'X'
 # define ENEMY_ANIM_FRAME 4
 # define FRAME_DELAY    8   
 
-// =========================== Structures ===========================
+// ========================= Time Constants =========================
+
+typedef long long t_ms;
+
+
+// ========================================== Structs ==========================================
 
 typedef struct s_axis
 {
@@ -154,6 +175,7 @@ typedef	struct	s_map
 
 typedef struct	s_data
 {
+    t_ms    last_update;
     size_t  enemy_count;
 	size_t	move_count;
 	size_t	exit_count;
@@ -183,6 +205,7 @@ typedef struct s_game
 	t_player		    player;
     t_enemy			    *enemies;
     t_enemy_textures    enemy_texture;
+    t_texture           counters[10];
 }	t_game;
 
 #endif

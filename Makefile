@@ -22,6 +22,7 @@ GNL_DIR = $(SRC_DIR)/gnl
 
 # Bonus subdirectories
 ENEMY_DIR = $(BONUS_DIR)/enemy
+BONUS_INIT_DIR = $(BONUS_DIR)/init
 
 # Libraries
 LIBS = $(LIBFT_DIR)/libft.a $(MLX_DIR)/libmlx.a -lXext -lX11 -lm
@@ -53,25 +54,27 @@ SRCS =										\
 
 
 # Bonus Source Files
-BONUS_SRCS = 										\
-				$(BONUS_DIR)/main_bonus.c			\
-				$(INIT_DIR)/init_game.c				\
-				$(INIT_DIR)/init_map.c				\
-				$(INIT_DIR)/init_mlx.c				\
-				$(BONUS_DIR)/init_data_bonus.c		\
-				$(BONUS_DIR)/init_texture_bonus.c	\
-				$(BONUS_DIR)/loop_bonus.c			\
-				$(BONUS_DIR)/draw_bonus.c			\
-				$(ENEMY_DIR)/move_enemy_bonus.c		\
-				$(ENEMY_DIR)/enemy_bonus.c			\
-				$(EVENT_DIR)/move.c					\
-				$(FREE_DIR)/free.c					\
-				$(CHECKER_DIR)/map_checker.c		\
-				$(CHECKER_DIR)/file_checker.c		\
-				$(UTILS_DIR)/str_utils.c			\
-				$(UTILS_DIR)/display.c				\
-				$(UTILS_DIR)/debug.c				\
-				$(GNL_DIR)/get_next_line.c			\
+BONUS_SRCS = 											\
+				$(BONUS_DIR)/main_bonus.c				\
+				$(INIT_DIR)/init_game.c					\
+				$(INIT_DIR)/init_map.c					\
+				$(INIT_DIR)/init_mlx.c					\
+				$(BONUS_INIT_DIR)/init_data_bonus.c		\
+				$(BONUS_INIT_DIR)/init_texture_bonus.c	\
+				$(BONUS_DIR)/loop_bonus.c				\
+				$(BONUS_DIR)/draw_bonus.c				\
+				$(BONUS_DIR)/time_bonus.c				\
+				$(BONUS_DIR)/move_player.c				\
+				$(BONUS_DIR)/counters_bonus.c			\
+				$(ENEMY_DIR)/move_enemy_bonus.c			\
+				$(ENEMY_DIR)/enemy_bonus.c				\
+				$(FREE_DIR)/free.c						\
+				$(CHECKER_DIR)/map_checker.c			\
+				$(CHECKER_DIR)/file_checker.c			\
+				$(UTILS_DIR)/str_utils.c				\
+				$(UTILS_DIR)/display.c					\
+				$(UTILS_DIR)/debug.c					\
+				$(GNL_DIR)/get_next_line.c				\
 				$(GNL_DIR)/get_next_line_utils.c
 
 # Default target

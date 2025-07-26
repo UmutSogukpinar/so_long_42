@@ -1,4 +1,5 @@
-#include "../../includes/game.h"
+#include "../includes/game.h"
+#include "../includes/game_bonus.h"
 
 static bool	handle_exit(t_game *game, char tile);
 static bool is_walkable(t_game *game, t_axis delta);
@@ -15,6 +16,12 @@ void	move_player(t_game *game, t_axis delta)
 	new_y = game->player.pos.y + delta.y;
 	if (!is_walkable(game, delta))
 		return ;
+	if (is_enemy_collision(game, new_x, new_y))
+	{
+		printf("You were caught by an enemy! Game over.\n");
+		handle_close(game);
+		return ;
+	}
 	next = game->map.matrix[new_y][new_x];
 	if (next == COLL)
 		handle_collectible(game, new_x, new_y);
@@ -23,7 +30,7 @@ void	move_player(t_game *game, t_axis delta)
 	update_player(&game->player, delta);
 	if (game->data.move_count < SIZE_MAX)
 		game->data.move_count++;
-	display_count_move(game->data.move_count);
+
 }
 
 static void update_player(t_player *player, t_axis delta)
@@ -46,7 +53,6 @@ static bool	handle_exit(t_game *game, char tile)
 	{
 		if (game->data.move_count < SIZE_MAX)
 			game->data.move_count++;
-		display_count_move(game->data.move_count);
 		handle_close(game);
 	}
 	return (true);

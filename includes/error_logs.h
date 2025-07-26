@@ -34,4 +34,6 @@
 
 # define TEXTURE_ERR        "Failed to load texture!"
 
+# define GETTIMEOFDAY_ERR   "gettimeofday() error"
+
 #endif

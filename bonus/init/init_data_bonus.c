@@ -1,5 +1,5 @@
-#include "../includes/game.h"
-#include "../includes/game_bonus.h"
+#include "../../includes/game.h"
+#include "../../includes/game_bonus.h"
 
 static bool	set_player(t_game *game, int x, int y);
 static bool set_enemy(t_game *game, int x, int y);
@@ -63,9 +63,11 @@ static bool set_enemy(t_game *game, int x, int y)
 static bool enemies_realloc(t_game *game, t_enemy new_enemy)
 {
 	t_enemy	*new_list;
+	size_t	new_size;
 	size_t	i;
 
-	new_list = ft_calloc(game->data.enemy_count, sizeof(t_enemy));
+	new_size = game->data.enemy_count + 1;
+	new_list = ft_calloc(new_size, sizeof(t_enemy));
 	if (!new_list)
 		return (display_error_msg(INIT_ERR, true));
 	i = 0;
@@ -77,7 +79,9 @@ static bool enemies_realloc(t_game *game, t_enemy new_enemy)
 	new_list[i] = new_enemy;
 	if (game->enemies)
 		free(game->enemies);
+
 	game->enemies = new_list;
-    game->data.enemy_count++;
+	game->data.enemy_count++;
 	return (true);
 }
+

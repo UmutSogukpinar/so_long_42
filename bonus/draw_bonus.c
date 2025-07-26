@@ -1,4 +1,5 @@
 #include "../includes/game.h"
+#include "../includes/game_bonus.h"
 
 static void *get_tile_img(t_game *game, char tile);
 static void draw_enemy(t_game *game, int x, int y);
@@ -50,6 +51,7 @@ static void draw_tile(t_game *game, size_t i, size_t j)
 	mlx_put_image_to_window(game->mlx->mlx, game->mlx->win, img, x * SIZE, y * SIZE);
 	draw_player(game, x, y);
 	draw_enemy(game, x, y);
+	draw_move_counter(game);
 }
 
 static void draw_player(t_game *game, int x, int y)
